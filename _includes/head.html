@@ -9,4 +9,62 @@
   {%- if jekyll.environment == 'production' and site.google_analytics -%}
     {%- include google-analytics.html -%}
   {%- endif -%}
+  <style>
+    html, body {
+      position: relative;
+      height: 100%;
+    }
+    body {
+      background: #eee;
+      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      color:#000;
+      margin: 0;
+      padding: 0;
+    }
+    .swiper-container {
+      width: 100%;
+      height: 100%;
+    }
+    .swiper-slide {
+      .swiper-pagination-bullet {
+      width: 14px;
+      height: 14px;
+      text-align: center;
+      line-height: 14px;
+      font-size: 12px;
+      background: #fff;
+      opacity: 0.7;
+      margin: 0px 6px !important;
+      transition: width 0.2s, height 0.2s, opacity 0.2s;
+    }
+
+    .swiper-pagination-bullet:hover {
+      opacity: 0.9;
+    }
+    .swiper-pagination-bullet-active {
+      opacity: 1;
+    }
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+      background-size: cover !important;
+      background-repeat: no-repeat !important;
+      background-position: center !important;
+
+      /* Center slide text vertically */
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+    }
+  </style>
 </head>

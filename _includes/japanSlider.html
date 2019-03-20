@@ -1,3 +1,10 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  
+  <!-- Link Swiper's CSS -->
+  <link rel="stylesheet" href="{{ "/assets/css/swiper.min.css" | relative_url }}">
 <style>
   html, body {
     position: relative;
@@ -60,6 +67,7 @@
     align-items: center;
   }
 </style>
+</head>
   <!-- Swiper -->
   <body>
   <div class="swiper-container">
@@ -90,7 +98,7 @@
   </div>
 
   <!-- Swiper JS -->
-  <script src="/assets/js/swiper.min.js"></script>
+  <script src="{{ "\assets\js\swiper.min.js" | relative_url }}"></script>
 
   <!-- Initialize Swiper -->
   <script>
@@ -110,4 +118,5 @@
     });
   </script>
   </body>
+  </html>
 

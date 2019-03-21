@@ -19,7 +19,7 @@ var map = new mapboxgl.Map({
 
 map.on('load', function () {
     // Add a layer showing the places.
-    var url = '\assets\geoJson\japanSkitracks.geojson'
+    var url = '\assets\geoJson\japanSkitracks.geojson';
     map.addSource('JapanSki',{type: 'geojson', data: url});
         });
     // When a click event occurs on a feature in the places layer, open a popup at the

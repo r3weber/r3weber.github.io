@@ -1,8 +1,4 @@
----
-layout: null
-title: Map Tour Slider
-permalink: /map_tour_slider/
----
+
 
 <html lang="en">
 <head>

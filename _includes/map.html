@@ -14,12 +14,14 @@ var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/r3weber1/cjsp27atf0lfd1fqntu4h01gz',
     center: [141.20553, 42.95139],
-    zoom: 11.15
+    zoom: 6
 });
 
 map.on('load', function () {
     // Add a layer showing the places.
-    var url = 'https://r3weber.github.io/blob/master/assets/geoJson/japanSkitracks.geojson';
+    var url = 'https://github.com/r3weber/r3weber.github.io/blob/master/assets/geoJson/japanSkitracks.geojson';
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     map.addSource('JapanSki', {type: 'geojson', data: url});
     
     // When a click event occurs on a feature in the places layer, open a popup at the

@@ -15,7 +15,7 @@
   }
   .swiper-container {
     width: 900px;
-    height: 800px;
+    
     
     
   }
@@ -100,6 +100,8 @@
   <script>
      var swiper = new Swiper('.swiper-container', {
       loop: true,
+      effect: 'flip',
+      autoHeight: 'true',
       autoplay: {
         delay: 5000,
         disableOnInteraction: false

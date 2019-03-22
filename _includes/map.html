@@ -19,11 +19,11 @@ var map = new mapboxgl.Map({
 
 map.on('load', function () {
     const invocation = new XMLHttpRequest();
-    const url = 'https://github.com/r3weber/r3weber.github.io/blob/master/assets/geoJson/japanSkitracks.geojson';
+    const site = 'https://github.com/r3weber/r3weber.github.io/blob/master/assets/geoJson/japanSkitracks.geojson';
    
     function callOtherDomain() {
     if(invocation) {    
-    invocation.open('GET', url, true);
+    invocation.open('GET', site, true);
     invocation.onreadystatechange = handler;
     invocation.send(); 
         };

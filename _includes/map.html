@@ -57,7 +57,7 @@ map.on('load', function () {
         
         new mapboxgl.Popup()
             .setLngLat(e.lngLat)
-            .setHTML(`<h1> ${description} </h1> <p><object type= text/html data=/_includes/japanSlider.html></object></p>`)
+            .setHTML(`<h1> ${description} </h1> <p><object type= "text/html" data="{{"/_includes/japanSlider.html"| relative_url }}"></object></p>`)
             .addTo(map);
     });
 

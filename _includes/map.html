@@ -18,16 +18,16 @@ var map = new mapboxgl.Map({
 });
 
 map.on('load', function () {
-    const invocation = new XMLHttpRequest();
-    const site = 'https://github.com/r3weber/r3weber.github.io/blob/master/assets/geoJson/japanSkitracks.geojson';
+    // const invocation = new XMLHttpRequest();
+    // const site = 'https://github.com/r3weber/r3weber.github.io/blob/master/assets/geoJson/japanSkitracks.geojson';
    
-    function callOtherDomain() {
-    if(invocation) {    
-    invocation.open('GET', site, true);
-    invocation.onreadystatechange = handler;
-    invocation.send(); 
-        };
-    };
+    // function callOtherDomain() {
+    // if(invocation) {    
+    // invocation.open('GET', site, true);
+    // invocation.onreadystatechange = handler;
+    // invocation.send(); 
+    //     };
+    // };
     // Add a layer showing the places.
     var url = 'https://github.com/r3weber/r3weber.github.io/blob/master/assets/geoJson/japanSkitracks.geojson';
     map.addSource('JapanSki', {type: 'geojson', data: url});

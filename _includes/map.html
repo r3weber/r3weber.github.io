@@ -34,7 +34,12 @@ map.on('load', function () {
     map.addLayer({
         "id": "JapanSki",
         "type": "line",
-        "source": "JapanSki"
+        "source": "JapanSki",
+        paint: {
+            'line-color': 'red',
+            'line-width': 4,
+        },
+
         
     });
     // When a click event occurs on a feature in the places layer, open a popup at the

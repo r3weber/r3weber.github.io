@@ -49,10 +49,10 @@ map.on('load', function () {
         while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
             coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
         }
-
+        
         new mapboxgl.Popup()
             .setLngLat(e.lngLat)
-            .setHTML((`<h1> + description + </h1> + <p><img src="/assets/images/IMG_3990.jpg" alt="dana"></p>`)
+            .setHTML((`<h1> ${description} </h1> <p><img src="/assets/images/IMG_3990.jpg" alt="dana"></p>`)
             .addTo(map);
     });
 

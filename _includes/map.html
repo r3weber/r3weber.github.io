@@ -77,7 +77,7 @@ map.on('load', function () {
         // 0 and 1 and returns another number between 0 and 1.
         easing: function (t) { return t*t; }
         });
-        if (description == 'Mt. Furano'){
+        if (description == 'Mt Furano'){
           new mapboxgl.Popup()
             .setLngLat(e.lngLat)
             .setHTML(`<h1> ${description} </h1> <object type= "text/html" data="{{"/furanoSlider.html"| relative_url }}" style="height:350px"></object>`)

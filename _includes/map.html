@@ -19,6 +19,8 @@ var map = new mapboxgl.Map({
     center: [141.20553, 42.95139],
     zoom: 9
 });
+var nav = new mapboxgl.NavigationControl();
+map.addControl(nav, 'top-left');
 
 map.on('load', function () {
     // const invocation = new XMLHttpRequest();

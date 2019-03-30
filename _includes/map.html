@@ -17,7 +17,7 @@ var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/r3weber1/cjsp27atf0lfd1fqntu4h01gz',
     center: [141.20553, 42.95139],
-    zoom: 9
+    zoom: 6
 });
 var nav = new mapboxgl.NavigationControl();
 map.addControl(nav, 'top-left');
@@ -64,7 +64,7 @@ map.on('load', function () {
         // These options control the ending camera position: centered at
         // the target, at zoom level 9, and north up.
             center: e.lngLat,
-            zoom: 11,
+            zoom: 12,
             bearing: 0,
  
             // These options control the flight curve, making it move

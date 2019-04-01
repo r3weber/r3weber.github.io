@@ -130,56 +130,56 @@ var toggleableLayerIds = ['Mt Furano', 'Mt. Yotei', 'Mt. Shiribetsu', 'Mt. Iwaon
          var clickedLayer = this.textContent;
          e.preventDefault();
          e.stopPropagation();
-         map.flyTo({
-     // These options control the ending camera position: centered at
-     // the target, at zoom level 9, and north up.
-         center: s.lngLat,
-         zoom: 12,
-         bearing: 0,
+    //      map.flyTo({
+    //  // These options control the ending camera position: centered at
+    //  // the target, at zoom level 9, and north up.
+    //      center: s.lngLat,
+    //      zoom: 12,
+    //      bearing: 0,
 
-         // These options control the flight curve, making it move
-     // slowly and zoom out almost completely before starting
-     // to pan.
-         speed: 0.2, // make the flying slow
-         curve: 1, // change the speed at which it zooms out
+    //      // These options control the flight curve, making it move
+    //  // slowly and zoom out almost completely before starting
+    //  // to pan.
+    //      speed: 0.2, // make the flying slow
+    //      curve: 1, // change the speed at which it zooms out
      
-     // This can be any easing function: it takes a number between
-     // 0 and 1 and returns another number between 0 and 1.
-         easing: function (t) { return t; }
-         });
-         if (clickedLayer == 'Mt Furano'){
-             new mapboxgl.Popup()
-                 .setLngLat(e.lngLat)
-                 .setHTML(`<h1> ${description} </h1> <object type= "text/html" data="{{"/furanoSlider.html"| relative_url }}" style="height:350px"></object>`)
-                 .addTo(map);  
-             } else if (clickedLayer == 'Mt. Yotei'){
-                 new mapboxgl.Popup()
-                 .setLngLat(e.lngLat)
-                 .setHTML(`<h1> ${description} </h1> <object type= "text/html" data="{{"/yoteiSlider.html"| relative_url }}" style="height:350px"></object>`)
-                 .addTo(map); 
-             } else if (clickedLayer == 'Mt. Shiribetsu'){
-                 new mapboxgl.Popup()
-                 .setLngLat(e.lngLat)
-                 .setHTML(`<h1> ${description} </h1> <object type= "text/html" data="{{"/shiribetsuSlider.html"| relative_url }}" style="height:350px"></object>`)
-                 .addTo(map);
-             } else {
-                 new mapboxgl.Popup()
-                 .setLngLat(e.lngLat)
-                 .setHTML(`<h1> ${description} </h1> <object type= "text/html" data="{{"/iwaonupuriSlider.html"| relative_url }}" style="height:350px"></object>`)
-                 .addTo(map);
+    //  // This can be any easing function: it takes a number between
+    //  // 0 and 1 and returns another number between 0 and 1.
+    //      easing: function (t) { return t; }
+    //      });
+    //      if (clickedLayer == 'Mt Furano'){
+    //          new mapboxgl.Popup()
+    //              .setLngLat(e.lngLat)
+    //              .setHTML(`<h1> ${description} </h1> <object type= "text/html" data="{{"/furanoSlider.html"| relative_url }}" style="height:350px"></object>`)
+    //              .addTo(map);  
+    //          } else if (clickedLayer == 'Mt. Yotei'){
+    //              new mapboxgl.Popup()
+    //              .setLngLat(e.lngLat)
+    //              .setHTML(`<h1> ${description} </h1> <object type= "text/html" data="{{"/yoteiSlider.html"| relative_url }}" style="height:350px"></object>`)
+    //              .addTo(map); 
+    //          } else if (clickedLayer == 'Mt. Shiribetsu'){
+    //              new mapboxgl.Popup()
+    //              .setLngLat(e.lngLat)
+    //              .setHTML(`<h1> ${description} </h1> <object type= "text/html" data="{{"/shiribetsuSlider.html"| relative_url }}" style="height:350px"></object>`)
+    //              .addTo(map);
+    //          } else {
+    //              new mapboxgl.Popup()
+    //              .setLngLat(e.lngLat)
+    //              .setHTML(`<h1> ${description} </h1> <object type= "text/html" data="{{"/iwaonupuriSlider.html"| relative_url }}" style="height:350px"></object>`)
+    //              .addTo(map);
+    //          }
+         
+         
+         
+         var visibility = map.getLayoutProperty(clickedLayer, 'visibility');
+         
+         if (visibility === 'visible') {
+             map.setLayoutProperty(clickedLayer, 'visibility', 'none');
+             this.className = '';
+         } else {
+             this.className = 'active';
+             map.setLayoutProperty(clickedLayer, 'visibility', 'visible');
              }
-         
-         
-         
-         // var visibility = map.getLayoutProperty(clickedLayer, 'visibility');
-         
-         // if (visibility === 'visible') {
-         //     map.setLayoutProperty(clickedLayer, 'visibility', 'none');
-         //     this.className = '';
-         // } else {
-         //     this.className = 'active';
-         //     map.setLayoutProperty(clickedLayer, 'visibility', 'visible');
-         //     }
          
  
      var layers = document.getElementById('menu');

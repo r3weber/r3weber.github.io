@@ -24,7 +24,7 @@
     });
     var nav = new mapboxgl.NavigationControl();
     map.addControl(nav, 'top-left');
-    map.addControl(new mapboxgl.FullscreenControl());
+    map.addControl(new mapboxgl.FullscreenControl('bottom-right'));
     
     map.on('load', function () {
         
@@ -43,6 +43,7 @@
             
         });
         var features = map.queryRenderedFeatures({layers:['JapanSki']});
+        console.log(features);
         if (features.length){
             features.forEach(function(feature) {
                 var property = feature.properties;

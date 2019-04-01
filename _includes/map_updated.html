@@ -42,14 +42,14 @@
             
             
         });
-        map.on('render', afterChangeComplete); // warning: this fires many times per second!
+        // map.on('render', afterChangeComplete); // warning: this fires many times per second!
 
-        function afterChangeComplete () {
-        if (!map.loaded()) { return } // still not loaded; bail out.
+        // function afterChangeComplete () {
+        // if (!map.loaded()) { return } // still not loaded; bail out.
 
-        // now that the map is loaded, it's safe to query the features:
-        var features = map.queryRenderedFeatures({layers:['JapanSki']});
-
+        // // now that the map is loaded, it's safe to query the features:
+        // var features = map.queryRenderedFeatures({layers:['JapanSki']});
+        var features = ['Mt Furano', 'Mt. Shiribetsu', 'Mt. Iwaonupuri', 'Mt. Yotei'];
         console.log(features);
         if (features.length){
             features.forEach(function(feature) {
@@ -58,27 +58,27 @@
                 link.href = '#';
                 link.className = 'active';
                 link.textContent = property.name;
-                link.onclick = function (e) {
-                    var clickedLayer = this.textContent;
-                    e.preventDefault();
-                    e.stopPropagation();
-                    map.flyTo({
-                    // These options control the ending camera position: centered at
-                    // the target, at zoom level 9, and north up.
-                        center: feature.geometry.coordinates,
-                        zoom: 12,
-                        bearing: 0,
+                // link.onclick = function (e) {
+                //     var clickedLayer = this.textContent;
+                //     e.preventDefault();
+                //     e.stopPropagation();
+                //     map.flyTo({
+                //     // These options control the ending camera position: centered at
+                //     // the target, at zoom level 9, and north up.
+                //         center: feature.geometry.coordinates,
+                //         zoom: 12,
+                //         bearing: 0,
             
-                        // These options control the flight curve, making it move
-                    // slowly and zoom out almost completely before starting
-                    // to pan.
-                    speed: 0.2, // make the flying slow
-                    curve: 1, // change the speed at which it zooms out
+                //         // These options control the flight curve, making it move
+                //     // slowly and zoom out almost completely before starting
+                //     // to pan.
+                //     speed: 0.2, // make the flying slow
+                //     curve: 1, // change the speed at which it zooms out
                     
-                    // This can be any easing function: it takes a number between
-                    // 0 and 1 and returns another number between 0 and 1.
-                    easing: function (t) { return t; }    
-                    });
+                //     // This can be any easing function: it takes a number between
+                //     // 0 and 1 and returns another number between 0 and 1.
+                //     easing: function (t) { return t; }    
+                //     });
                     var layers = document.getElementById('menu');
                     layers.appendChild(link);
                     

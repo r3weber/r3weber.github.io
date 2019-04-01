@@ -27,16 +27,7 @@
     map.addControl(new mapboxgl.FullscreenControl());
     
     map.on('load', function () {
-        // const invocation = new XMLHttpRequest();
-        // const site = 'https://github.com/r3weber/r3weber.github.io/blob/master/assets/geoJson/japanSkitracks.geojson';
-       
-        // function callOtherDomain() {
-        // if(invocation) {    
-        // invocation.open('GET', site, true);
-        // invocation.onreadystatechange = handler;
-        // invocation.send(); 
-        //     };
-        // };
+        
         // Add a layer showing the places.
         var url = 'https://r3weber.github.io/assets/geoJson/japanSkitracks.geojson';
         map.addSource('JapanSki', {type: 'geojson', data: url});
@@ -48,9 +39,45 @@
                 'line-color': 'red',
                 'line-width': 4,
             },
-    
+            
             
         });
+        var features = map.queryRenderedFeatures({layers:['JapanSki']});
+        if (features.length){
+            features.forEach(function(feature) {
+                var property = feature.properties;
+                var link = document.createElement('a');
+                link.href = '#';
+                link.className = 'active';
+                link.textContent = property.name;
+                link.onclick = function (e) {
+                    var clickedLayer = this.textContent;
+                    e.preventDefault();
+                    e.stopPropagation();
+                    map.flyTo({
+                    // These options control the ending camera position: centered at
+                    // the target, at zoom level 9, and north up.
+                        center: feature.geometry.coordinates,
+                        zoom: 12,
+                        bearing: 0,
+            
+                        // These options control the flight curve, making it move
+                    // slowly and zoom out almost completely before starting
+                    // to pan.
+                    speed: 0.2, // make the flying slow
+                    curve: 1, // change the speed at which it zooms out
+                    
+                    // This can be any easing function: it takes a number between
+                    // 0 and 1 and returns another number between 0 and 1.
+                    easing: function (t) { return t; }    
+                    });
+                    var layers = document.getElementById('menu');
+                    layers.appendChild(link);
+                    
+        
+                };
+            });
+        }
         // When a click event occurs on a feature in the places layer, open a popup at the
         // location of the feature, with description HTML from its properties.
         map.on('click', 'JapanSki', function (e) {
@@ -116,42 +143,6 @@
             map.getCanvas().style.cursor = '';
         });
     });
-// var features = map.queryRenderedFeatures({layers:['JapanSki']});
-if (features.length){
-    features.forEach(function(feature) {
-        var property = feature.properties;
-        var link = document.createElement('a');
-        link.href = '#';
-        link.className = 'active';
-        link.textContent = property.name;
-        link.onclick = function (e) {
-            var clickedLayer = this.textContent;
-            e.preventDefault();
-            e.stopPropagation();
-            map.flyTo({
-            // These options control the ending camera position: centered at
-            // the target, at zoom level 9, and north up.
-                center: feature.geometry.coordinates,
-                zoom: 12,
-                bearing: 0,
-     
-                // These options control the flight curve, making it move
-            // slowly and zoom out almost completely before starting
-            // to pan.
-            speed: 0.2, // make the flying slow
-            curve: 1, // change the speed at which it zooms out
-            
-            // This can be any easing function: it takes a number between
-            // 0 and 1 and returns another number between 0 and 1.
-            easing: function (t) { return t; }    
-            });
-            var layers = document.getElementById('menu');
-            layers.appendChild(link);
-            
- 
-        };
-    });
-}
 
    
     </script>

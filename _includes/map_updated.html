@@ -50,11 +50,9 @@
         // // now that the map is loaded, it's safe to query the features:
         // var features = map.queryRenderedFeatures({layers:['JapanSki']});
         var features = ['Mt Furano', 'Mt. Shiribetsu', 'Mt. Iwaonupuri', 'Mt. Yotei'];
-        console.log(features);
-        if (features.length){
-            var id = features[i] 
-            features.forEach(function(feature) {
-                var property = feature.properties;
+        for (var i = 0; i < features.length; i++){
+                var id = features[i]
+                // var property = feature.properties;
                 var link = document.createElement('a');
                 link.href = '#';
                 link.className = 'active';

@@ -52,7 +52,7 @@
 
         map.off('render', afterChangeComplete); // remove this handler now that we're done.
         }
-        var features = map.queryRenderedFeatures({layers:['JapanSki']});
+        
         console.log(features);
         if (features.length){
             features.forEach(function(feature) {

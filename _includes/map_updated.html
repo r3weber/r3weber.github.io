@@ -42,6 +42,16 @@
             
             
         });
+        map.on('render', afterChangeComplete); // warning: this fires many times per second!
+
+        function afterChangeComplete () {
+        if (!map.loaded()) { return } // still not loaded; bail out.
+
+        // now that the map is loaded, it's safe to query the features:
+        var features = map.queryRenderedFeatures({layers:['JapanSki']});
+
+        map.off('render', afterChangeComplete); // remove this handler now that we're done.
+        }
         var features = map.queryRenderedFeatures({layers:['JapanSki']});
         console.log(features);
         if (features.length){

@@ -167,6 +167,9 @@
             link.textContent = id;
             
             link.onclick = function (e) {
+                var clickedLayer = this.textContent;
+                e.preventDefault();
+                e.stopPropagation();
                 map.flyTo({
             // These options control the ending camera position: centered at
             // the target, at zoom level 9, and north up.
@@ -184,23 +187,22 @@
             // 0 and 1 and returns another number between 0 and 1.
                 easing: function (t) { return t; }
                 });
-                // var clickedLayer = this.textContent;
-                // e.preventDefault();
-                // e.stopPropagation();
                 
-                // var visibility = map.getLayoutProperty(clickedLayer, 'visibility');
                 
-                // if (visibility === 'visible') {
-                //     map.setLayoutProperty(clickedLayer, 'visibility', 'none');
-                //     this.className = '';
-                // } else {
-                //     this.className = 'active';
-                //     map.setLayoutProperty(clickedLayer, 'visibility', 'visible');
-                //     }
-                // };
+                
+                var visibility = map.getLayoutProperty(clickedLayer, 'visibility');
+                
+                if (visibility === 'visible') {
+                    map.setLayoutProperty(clickedLayer, 'visibility', 'none');
+                    this.className = '';
+                } else {
+                    this.className = 'active';
+                    map.setLayoutProperty(clickedLayer, 'visibility', 'visible');
+                    }
+                };
         
             var layers = document.getElementById('menu');
-            layers.appendChild(link);
+            layers.appendChild(link)
         }
     </script>
     

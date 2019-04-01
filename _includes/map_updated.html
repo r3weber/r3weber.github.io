@@ -52,12 +52,13 @@
         var features = ['Mt Furano', 'Mt. Shiribetsu', 'Mt. Iwaonupuri', 'Mt. Yotei'];
         console.log(features);
         if (features.length){
+            var id = features[i] 
             features.forEach(function(feature) {
                 var property = feature.properties;
                 var link = document.createElement('a');
                 link.href = '#';
                 link.className = 'active';
-                link.textContent = property.name;
+                link.textContent = id;
                 // link.onclick = function (e) {
                 //     var clickedLayer = this.textContent;
                 //     e.preventDefault();

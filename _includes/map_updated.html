@@ -1,0 +1,207 @@
+<body>
+
+    <style>
+        .mapboxgl-popup {
+            max-width: 400;
+            font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+        }
+        .mapboxgl-popup-content {
+            height:400px;
+        }
+        #menu {
+            background: #fff;
+            position: absolute;
+            z-index: 1;
+            top: 10px;
+            right: 10px;
+            border-radius: 3px;
+            width: 120px;
+            border: 1px solid rgba(0,0,0,0.4);
+            font-family: 'Open Sans', sans-serif;
+            }
+            
+        #menu a {
+            font-size: 13px;
+            color: #404040;
+            display: block;
+            margin: 0;
+            padding: 0;
+            padding: 10px;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(0,0,0,0.25);
+            text-align: center;
+            }
+            
+        #menu a:last-child {
+            border: none;
+            }
+            
+        #menu a:hover {
+            background-color: #f8f8f8;
+            color: #404040;
+            }
+            
+        #menu a.active {
+            background-color: #3887be;
+            color: #ffffff;
+            }
+            
+        #menu a.active:hover {
+            background: #3074a4;
+            }
+    </style>
+    <nav id="menu"></nav>
+    <div id='map'></div>
+    <script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoicjN3ZWJlcjEiLCJhIjoiY2lyM3lhc3FnMDFrZ2Zwbm04cncwa2JkMiJ9.AeYZqyDiobmuxAVfIKE8gA';
+    
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/r3weber1/cjsp27atf0lfd1fqntu4h01gz',
+        center: [141.20553, 42.95139],
+        zoom: 7
+    });
+    var nav = new mapboxgl.NavigationControl();
+    map.addControl(nav, 'top-left');
+    map.addControl(new mapboxgl.FullscreenControl());
+    
+    map.on('load', function () {
+        // const invocation = new XMLHttpRequest();
+        // const site = 'https://github.com/r3weber/r3weber.github.io/blob/master/assets/geoJson/japanSkitracks.geojson';
+       
+        // function callOtherDomain() {
+        // if(invocation) {    
+        // invocation.open('GET', site, true);
+        // invocation.onreadystatechange = handler;
+        // invocation.send(); 
+        //     };
+        // };
+        // Add a layer showing the places.
+        var url = 'https://r3weber.github.io/assets/geoJson/japanSkitracks.geojson';
+        map.addSource('JapanSki', {type: 'geojson', data: url});
+        map.addLayer({
+            "id": "JapanSki",
+            "type": "line",
+            "source": "JapanSki",
+            paint: {
+                'line-color': 'red',
+                'line-width': 4,
+            },
+    
+            
+        });
+        // When a click event occurs on a feature in the places layer, open a popup at the
+        // location of the feature, with description HTML from its properties.
+        map.on('click', 'JapanSki', function (e) {
+            var coordinates = e.features[0].geometry.coordinates.slice();
+            var description = e.features[0].properties.name;
+    
+            // Ensure that if the map is zoomed out such that multiple
+            // copies of the feature are visible, the popup appears
+            // over the copy being pointed to.
+            while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+                coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+            }
+            map.flyTo({
+            // These options control the ending camera position: centered at
+            // the target, at zoom level 9, and north up.
+                center: e.lngLat,
+                zoom: 12,
+                bearing: 0,
+     
+                // These options control the flight curve, making it move
+            // slowly and zoom out almost completely before starting
+            // to pan.
+            speed: 0.2, // make the flying slow
+            curve: 1, // change the speed at which it zooms out
+            
+            // This can be any easing function: it takes a number between
+            // 0 and 1 and returns another number between 0 and 1.
+            easing: function (t) { return t; }
+            });
+            if (description == 'Mt Furano'){
+              new mapboxgl.Popup()
+                .setLngLat(e.lngLat)
+                .setHTML(`<h1> ${description} </h1> <object type= "text/html" data="{{"/furanoSlider.html"| relative_url }}" style="height:350px"></object>`)
+                .addTo(map);  
+            } else if (description == 'Mt. Yotei'){
+                new mapboxgl.Popup()
+                .setLngLat(e.lngLat)
+                .setHTML(`<h1> ${description} </h1> <object type= "text/html" data="{{"/yoteiSlider.html"| relative_url }}" style="height:350px"></object>`)
+                .addTo(map); 
+            } else if (description == 'Mt. Shiribetsu'){
+                new mapboxgl.Popup()
+                .setLngLat(e.lngLat)
+                .setHTML(`<h1> ${description} </h1> <object type= "text/html" data="{{"/shiribetsuSlider.html"| relative_url }}" style="height:350px"></object>`)
+                .addTo(map);
+            } else {
+                new mapboxgl.Popup()
+                .setLngLat(e.lngLat)
+                .setHTML(`<h1> ${description} </h1> <object type= "text/html" data="{{"/iwaonupuriSlider.html"| relative_url }}" style="height:350px"></object>`)
+                .addTo(map);
+            }
+            
+        });
+    
+
+    
+        // Change the cursor to a pointer when the mouse is over the places layer.
+        map.on('mouseenter', 'JapanSki', function () {
+            map.getCanvas().style.cursor = 'pointer';
+        });
+    
+        // Change it back to a pointer when it leaves.
+        map.on('mouseleave', 'JapanSki', function () {
+            map.getCanvas().style.cursor = '';
+        });
+    });
+
+    var toggleableLayerIds = description;
+ 
+        for (var i = 0; i < toggleableLayerIds.length; i++) {
+            var id = toggleableLayerIds[i];
+            
+            var link = document.createElement('a');
+            link.href = '#';
+            link.className = 'active';
+            link.textContent = id;
+            
+            link.onclick = function (e) {
+                map.flyTo({
+            // These options control the ending camera position: centered at
+            // the target, at zoom level 9, and north up.
+                center: e.lngLat,
+                zoom: 12,
+                bearing: 0,
+     
+                // These options control the flight curve, making it move
+            // slowly and zoom out almost completely before starting
+            // to pan.
+                speed: 0.2, // make the flying slow
+                curve: 1, // change the speed at which it zooms out
+            
+            // This can be any easing function: it takes a number between
+            // 0 and 1 and returns another number between 0 and 1.
+                easing: function (t) { return t; }
+                });
+                // var clickedLayer = this.textContent;
+                // e.preventDefault();
+                // e.stopPropagation();
+                
+                // var visibility = map.getLayoutProperty(clickedLayer, 'visibility');
+                
+                // if (visibility === 'visible') {
+                //     map.setLayoutProperty(clickedLayer, 'visibility', 'none');
+                //     this.className = '';
+                // } else {
+                //     this.className = 'active';
+                //     map.setLayoutProperty(clickedLayer, 'visibility', 'visible');
+                //     }
+                // };
+        
+            var layers = document.getElementById('menu');
+            layers.appendChild(link);
+        };
+    </script>
+    
+    </body>

@@ -24,7 +24,7 @@
     });
     var nav = new mapboxgl.NavigationControl();
     map.addControl(nav, 'top-left');
-    map.addControl(new mapboxgl.FullscreenControl('bottom-right'));
+    map.addControl(new mapboxgl.FullscreenControl());
     
     map.on('load', function () {
         
@@ -78,9 +78,11 @@
                     // 0 and 1 and returns another number between 0 and 1.
                     easing: function (t) { return t; }    
                     });
+
                     var layers = document.getElementById('menu');
                     layers.appendChild(link);
-            }
+            };
+        }
         
 
        

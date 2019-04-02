@@ -42,9 +42,9 @@
                 },            
         });
     });   
-        var features = ['Mt Furano', 'Mt. Shiribetsu', 'Mt. Iwaonupuri', 'Mt. Yotei'];
+        var features = map.queryRenderedFeatures({ layers: ['JapanSki'] });;
         for (var i = 0; i < features.length; i++){
-                var id = features[i]
+                var id = features[i].properties.name
                 // var property = feature.properties;
                 var link = document.createElement('a');
                 link.href = '#';
@@ -56,7 +56,7 @@
         }
         document.getElementById(id).addEventListener('click', function() {
                     
-            var coordinates = url.features[0].geometry.coordinates;
+                    var coordinates = url.features[0].geometry.coordinates;
                     
                     // Pass the first coordinates in the LineString to `lngLatBounds` &
                     // wrap each coordinate pair in `extend` to include them in the bounds

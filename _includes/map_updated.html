@@ -52,31 +52,31 @@
                 var layers = document.getElementById('menu');
                 layers.appendChild(link);
                 link.onclick = function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
                     var routes = map.queryRenderedFeatures({layers:['JapanSki']});
                     for (var i = 0; i < routes.length; i++ ){
                         var route = routes[i].name
+                        var routeCoords = routes[i].coordinates
                         if (route == e.textContent){
-                        var coords = route.lngLat
 
-                        e.preventDefault();
-                        e.stopPropagation();
-                        map.flyTo({
-                        // These options control the ending camera position: centered at
-                        // the target, at zoom level 9, and north up.
-                        center: coords,
-                        zoom: 12,
-                        bearing: 0,
-            
-                        // These options control the flight curve, making it move
-                        // slowly and zoom out almost completely before starting
-                        // to pan.
-                        speed: 0.2, // make the flying slow
-                        curve: 1, // change the speed at which it zooms out
-                    
-                        // This can be any easing function: it takes a number between
-                        // 0 and 1 and returns another number between 0 and 1.
-                        easing: function (t) { return t; }   
-                        });
+                            map.flyTo({
+                            // These options control the ending camera position: centered at
+                            // the target, at zoom level 9, and north up.
+                            center: routeCoords,
+                            zoom: 12,
+                            bearing: 0,
+                
+                            // These options control the flight curve, making it move
+                            // slowly and zoom out almost completely before starting
+                            // to pan.
+                            speed: 0.2, // make the flying slow
+                            curve: 1, // change the speed at which it zooms out
+                        
+                            // This can be any easing function: it takes a number between
+                            // 0 and 1 and returns another number between 0 and 1.
+                            easing: function (t) { return t; }   
+                            });
                         } 
                     }   
                     

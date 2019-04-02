@@ -56,12 +56,14 @@
                     e.preventDefault();
                     e.stopPropagation();
                     var skiRoutes = map.queryRenderedFeatures({layers:['JapanSki']});
+                    console.log(skiRoutes)
                     var skiRoute = skiRoutes[0];
                     
                     // Geographic coordinates of the LineString
                     if (skiRoute.properties.name == document.getElementById(id)){
 
                     var coordinates = skiRoute.geometry.coordinates;
+                    console.log(coordinates)
                     
                     // Pass the first coordinates in the LineString to `lngLatBounds` &
                     // wrap each coordinate pair in `extend` to include them in the bounds

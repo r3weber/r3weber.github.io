@@ -53,9 +53,9 @@
                 link.textContent = id;
                 var layers = document.getElementById('menu');
                 layers.appendChild(link);
-                document.getElementById(id).addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
+                document.getElementById(id).addEventListener('click', function() {
+                    link.preventDefault();
+                    link.stopPropagation();
                     var skiRoutes = map.queryRenderedFeatures({layers:['JapanSki']});
                     console.log(skiRoutes)
                     var skiRoute = skiRoutes[0];

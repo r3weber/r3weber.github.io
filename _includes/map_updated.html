@@ -51,38 +51,58 @@
                 link.textContent = id;
                 var layers = document.getElementById('menu');
                 layers.appendChild(link);
-                link.onclick = function (e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    var routes = map.queryRenderedFeatures({layers:['JapanSki']});
-                    for (var i = 0; i < routes.length; i++ ){
-                        var route = routes[i].name
-                        var routeCoords = routes[i].lngLat
-                        if (route == e.textContent){
-
-                            map.flyTo({
-                            // These options control the ending camera position: centered at
-                            // the target, at zoom level 9, and north up.
-                            center: routeCoords,
-                            zoom: 12,
-                            bearing: 0,
+                document.getElementsByName(id).addEventListener('click', function() {
+ 
+                    // Geographic coordinates of the LineString
+                    var coordinates = url.features[0].geometry.coordinates;
+                    
+                    // Pass the first coordinates in the LineString to `lngLatBounds` &
+                    // wrap each coordinate pair in `extend` to include them in the bounds
+                    // result. A variation of this technique could be applied to zooming
+                    // to the bounds of multiple Points or Polygon geomteries - it just
+                    // requires wrapping all the coordinates with the extend method.
+                    var bounds = coordinates.reduce(function(bounds, coord) {
+                        return bounds.extend(coord);
+                    }, new mapboxgl.LngLatBounds(coordinates[0], coordinates[0]));
                 
-                            // These options control the flight curve, making it move
-                            // slowly and zoom out almost completely before starting
-                            // to pan.
-                            speed: 0.2, // make the flying slow
-                            curve: 1, // change the speed at which it zooms out
+                    map.fitBounds(bounds, {
+                    padding: 20
+                    });
+                });
+            
+        };
+                // link.onclick = function (e) {
+                //     e.preventDefault();
+                //     e.stopPropagation();
+                //     var routes = map.queryRenderedFeatures({layers:['JapanSki']});
+                //     for (var i = 0; i < routes.length; i++ ){
+                //         var route = routes[i].name
+                //         var routeCoords = routes[i].lngLat
+                //         if (route == e.textContent){
+
+                //             map.flyTo({
+                //             // These options control the ending camera position: centered at
+                //             // the target, at zoom level 9, and north up.
+                //             center: routeCoords,
+                //             zoom: 12,
+                //             bearing: 0,
+                
+                //             // These options control the flight curve, making it move
+                //             // slowly and zoom out almost completely before starting
+                //             // to pan.
+                //             speed: 0.2, // make the flying slow
+                //             curve: 1, // change the speed at which it zooms out
                         
-                            // This can be any easing function: it takes a number between
-                            // 0 and 1 and returns another number between 0 and 1.
-                            easing: function (t) { return t; }   
-                            });
-                        } 
-                    }   
+                //             // This can be any easing function: it takes a number between
+                //             // 0 and 1 and returns another number between 0 and 1.
+                //             easing: function (t) { return t; }   
+                //             });
+                //         } 
+                //     }   
                     
                     
-            };
-        }      
+            
+             
         // When a click event occurs on a feature in the places layer, open a popup at the
         // location of the feature, with description HTML from its properties.
         map.on('click', 'JapanSki', function (e) {

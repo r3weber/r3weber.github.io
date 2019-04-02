@@ -54,14 +54,17 @@
                 var layers = document.getElementById('menu');
                 layers.appendChild(link);
                 link.onclick = function (e) {
-                    var route = map.queryRenderedFeatures(link.textContent, {layers:['JapanSki']});    // var clickedLayer = this.textContent;
+                    var route = map.queryRenderedFeatures({layers:['JapanSki']});    // var clickedLayer = this.textContent;
                     console.log(route)
+                    if (route.name == e.textContent){
+                        var location = route.lngLat
+                    } 
                     e.preventDefault();
                     e.stopPropagation();
                     map.flyTo({
                     // These options control the ending camera position: centered at
                     // the target, at zoom level 9, and north up.
-                        center: route.lngLat,
+                        center: location,
                         zoom: 12,
                         bearing: 0,
             

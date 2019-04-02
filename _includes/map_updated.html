@@ -48,10 +48,11 @@
                 var link = document.createElement('a');
                 link.href = '#';
                 link.className = 'active';
+                link.id = id;
                 link.textContent = id;
                 var layers = document.getElementById('menu');
                 layers.appendChild(link);
-                document.getElementsByName(id).addEventListener('click', function() {
+                document.getElementById(id).addEventListener('click', function() {
  
                     // Geographic coordinates of the LineString
                     var coordinates = url.features[0].geometry.coordinates;

@@ -46,7 +46,7 @@ map.on('load', function() {
     'source': {
         'type': 'raster',
         'tiles': [
-        'https://18.215.136.81:8443/geoserver/ows?service=wcs&version=1.0.0&request=GetCapabilities'
+        'https://18.215.136.81:8443/geoserver/ows?bbox={bbox-epsg-3857}&format=image/png&service=wcs&version=1.0.0&request=GetCapabilities'
         ],
         'tileSize': 256
         },

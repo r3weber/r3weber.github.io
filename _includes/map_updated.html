@@ -60,7 +60,8 @@
                 var layers = document.getElementById('menu');
                 layers.appendChild(link);
                 link.onclick = function (e) {
-                var routes = map.queryRenderedFeatures({layers:['JapanSki']});    // var clickedLayer = this.textContent;
+                    var routes = map.queryRenderedFeatures({layers:['JapanSki']});    // var clickedLayer = this.textContent;
+                    console.log(routes)
                     e.preventDefault();
                     e.stopPropagation();
                     map.flyTo({

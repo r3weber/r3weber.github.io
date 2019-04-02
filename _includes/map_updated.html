@@ -38,9 +38,7 @@
             paint: {
                 'line-color': 'red',
                 'line-width': 4,
-            },
-            
-            
+            },            
         });
         
         var features = ['Mt Furano', 'Mt. Shiribetsu', 'Mt. Iwaonupuri', 'Mt. Yotei'];
@@ -54,39 +52,37 @@
                 var layers = document.getElementById('menu');
                 layers.appendChild(link);
                 link.onclick = function (e) {
-                    var route = map.queryRenderedFeatures({layers:['JapanSki']});    // var clickedLayer = this.textContent;
-                    console.log(route)
-                    if (route.name == e.textContent){
-                        var coords = route[0].lngLat
-                    } 
-                    e.preventDefault();
-                    e.stopPropagation();
-                    map.flyTo({
-                    // These options control the ending camera position: centered at
-                    // the target, at zoom level 9, and north up.
+                    var routes = map.queryRenderedFeatures({layers:['JapanSki']});
+                    for (var i = 0; i < routes.length; i++ ){
+                        var route = routes[i].name
+                        if (route.name == e.textContent){
+                        var coords = route.lngLat
+
+                        e.preventDefault();
+                        e.stopPropagation();
+                        map.flyTo({
+                        // These options control the ending camera position: centered at
+                        // the target, at zoom level 9, and north up.
                         center: coords,
                         zoom: 12,
                         bearing: 0,
             
                         // These options control the flight curve, making it move
-                    // slowly and zoom out almost completely before starting
-                    // to pan.
-                    speed: 0.2, // make the flying slow
-                    curve: 1, // change the speed at which it zooms out
+                        // slowly and zoom out almost completely before starting
+                        // to pan.
+                        speed: 0.2, // make the flying slow
+                        curve: 1, // change the speed at which it zooms out
                     
-                    // This can be any easing function: it takes a number between
-                    // 0 and 1 and returns another number between 0 and 1.
-                    easing: function (t) { return t; }   
-                    });
-
+                        // This can be any easing function: it takes a number between
+                        // 0 and 1 and returns another number between 0 and 1.
+                        easing: function (t) { return t; }   
+                        });
+                        } 
+                    }   
+                    
                     
             };
-        }
-        
-
-       
-        
-        
+        }      
         // When a click event occurs on a feature in the places layer, open a popup at the
         // location of the feature, with description HTML from its properties.
         map.on('click', 'JapanSki', function (e) {

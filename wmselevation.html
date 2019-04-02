@@ -16,7 +16,7 @@
 <div id='map'></div>
 <script>
 mapboxgl.accessToken = 'pk.eyJ1IjoicjN3ZWJlcjEiLCJhIjoiY2lyM3lhc3FnMDFrZ2Zwbm04cncwa2JkMiJ9.AeYZqyDiobmuxAVfIKE8gA';
-
+var tileset = 'mapbox.streets';
 var map = new mapboxgl.Map({
     container: 'map', // container id
     style: {
@@ -26,12 +26,24 @@ var map = new mapboxgl.Map({
                 "type": "raster",
                 "url":  "https://services.sentinel-hub.com/ogc/wcs/%7BINSTANCE_ID%7D?SERVICE=WCS&REQUEST=GetCoverage&COVERAGE=TRUE_COLOR&BBOX=3238005,5039853,3244050,5045897&MAXCC=20&WIDTH=320&HEIGHT=320&FORMAT=image/jpeg&TIME=2016-01-29/2016-02-29",
                 "tileSize": 256
-            }
+            },
+            "streets": {
+                "type": "raster",
+                "url": "mapbox://" + tileset,
+                "tileSize": 256
+                }
         },
         "layers": [{
             "id": "simple-tiles",
             "type": "raster",
             "source": "raster-tiles",
+            "minzoom": 0,
+            "maxzoom": 22
+        },
+        { 
+            "id": "streets",
+            "type": "raster",
+            "source": "streets",
             "minzoom": 0,
             "maxzoom": 22
         }]

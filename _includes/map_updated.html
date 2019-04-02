@@ -43,7 +43,7 @@
         });
     });
     if (map.isStyleLoaded()){   
-        var features = map.queryRenderedFeatures({ layers: ['JapanSki'] });;
+        var features = map.queryRenderedFeatures({ layers: ['JapanSki'] });
         for (var i = 0; i < features.length; i++){
                 var id = features[i].properties.name
                 // var property = feature.properties;

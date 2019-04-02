@@ -52,14 +52,14 @@
                 link.textContent = id;
                 var layers = document.getElementById('menu');
                 layers.appendChild(link);
-                document.getElementById(id).addEventListener('click', function() {
-                    preventDefault();
-                    stopPropagation();
+                document.getElementById(id).addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
                     var skiRoutes = map.queryRenderedFeatures({layers:['JapanSki']});
                     var skiRoute = skiRoutes[0];
                     
                     // Geographic coordinates of the LineString
-                    if (skiRoute.properties.name == document.getElementById(id)){
+                    if (skiRoute.properties.name == e.document.getElementById(id)){
 
                     var coordinates = skiRoute.geometry.coordinates;
                     

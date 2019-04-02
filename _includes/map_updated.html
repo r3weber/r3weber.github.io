@@ -26,18 +26,19 @@
     map.addControl(nav, 'top-left');
     map.addControl(new mapboxgl.FullscreenControl());
      // Add a layer showing the places.
-    var url = 'https://r3weber.github.io/assets/geoJson/japanSkitracks.geojson';
-    var geoJson = map.addSource('JapanSki', {type: 'geojson', data: url});
+    
    
     map.on('load', function () {
-         map.addLayer({
-        "id": "JapanSki",
-        "type": "line",
-        "source": "JapanSki",
-        paint: {
-            'line-color': 'red',
-            'line-width': 4,
-            },            
+        var url = 'https://r3weber.github.io/assets/geoJson/japanSkitracks.geojson';
+        var geoJson = map.addSource('JapanSki', {type: 'geojson', data: url});
+        map.addLayer({
+            "id": "JapanSki",
+            "type": "line",
+            "source": "JapanSki",
+            paint: {
+                'line-color': 'red',
+                'line-width': 4,
+                },            
         });  
         var features = ['Mt Furano', 'Mt. Shiribetsu', 'Mt. Iwaonupuri', 'Mt. Yotei'];
         for (var i = 0; i < features.length; i++){

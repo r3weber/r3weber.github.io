@@ -30,7 +30,7 @@
         
         // Add a layer showing the places.
         var url = 'https://r3weber.github.io/assets/geoJson/japanSkitracks.geojson';
-        map.addSource('JapanSki', {type: 'geojson', data: url});
+       var geoJson = map.addSource('JapanSki', {type: 'geojson', data: url});
         map.addLayer({
             "id": "JapanSki",
             "type": "line",
@@ -55,7 +55,7 @@
                 document.getElementById(id).addEventListener('click', function() {
  
                     // Geographic coordinates of the LineString
-                    var coordinates = url.features[0].geometry.coordinates;
+                    var coordinates = geoJson.features[0].geometry.coordinates;
                     
                     // Pass the first coordinates in the LineString to `lngLatBounds` &
                     // wrap each coordinate pair in `extend` to include them in the bounds

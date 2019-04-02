@@ -57,7 +57,7 @@
                     var routes = map.queryRenderedFeatures({layers:['JapanSki']});
                     for (var i = 0; i < routes.length; i++ ){
                         var route = routes[i].name
-                        var routeCoords = routes[i].coordinates
+                        var routeCoords = routes[i].lngLat
                         if (route == e.textContent){
 
                             map.flyTo({

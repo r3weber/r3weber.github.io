@@ -46,7 +46,7 @@ map.on('load', function() {
     'source': {
         'type': 'raster',
         'tiles': [
-        'https://18.215.136.81:8443/geoserver/ows?bbox={bbox-epsg-3857}&format=image/png&service=wcs&version=1.0.0&request=GetCapabilities'
+        'https://18.215.136.81:8443/geoserver/ows?service=wms?bbox={bbox-epsg-3857}&format=image/png&service=WMS&version=1.1.1&request=GetMap&srs=EPSG:3857&width=256&height=256&layers=OSMGISDEV_Elevation:az_blackmesakayenta17mar31lidvmdsmhm05_webmerc84'
         ],
         'tileSize': 256
         },

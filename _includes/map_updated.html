@@ -27,9 +27,9 @@
     map.addControl(new mapboxgl.FullscreenControl());
      // Add a layer showing the places.
     
-   
+   var url = 'https://r3weber.github.io/assets/geoJson/japanSkitracks.geojson';
     map.on('load', function () {
-        var url = 'https://r3weber.github.io/assets/geoJson/japanSkitracks.geojson';
+        
         var geoJson = map.addSource('JapanSki', {type: 'geojson', data: url});
        
         map.addLayer({
@@ -46,25 +46,17 @@
         for (var i = 0; i < features.length; i++){
                 var id = features[i]
                 // var property = feature.properties;
-                var link = document.createElement('a');
+                var link = document.createElement('nav');
                 link.href = '#';
                 link.className = 'active';
                 link.id = id;
                 link.textContent = id;
                 var layers = document.getElementById('menu');
                 layers.appendChild(link);
-                document.getElementById(id).addEventListener('click', function() {
-                    link.preventDefault();
-                    link.stopPropagation();
-                    var skiRoutes = map.queryRenderedFeatures({layers:['JapanSki']});
-                    console.log(skiRoutes)
-                    var skiRoute = skiRoutes[0];
+        }
+        document.getElementById(id).addEventListener('click', function() {
                     
-                    // Geographic coordinates of the LineString
-                    if (skiRoute.properties.name == document.getElementById(id)){
-
-                    var coordinates = skiRoute.geometry.coordinates;
-                    console.log(coordinates)
+            var coordinates = url.features[0].geometry.coordinates;
                     
                     // Pass the first coordinates in the LineString to `lngLatBounds` &
                     // wrap each coordinate pair in `extend` to include them in the bounds
@@ -77,40 +69,9 @@
                 
                     map.fitBounds(bounds, {
                     padding: 20
-                    });
-                    }
-                    
-                });
-            
-        };
-                // link.onclick = function (e) {
-                //     e.preventDefault();
-                //     e.stopPropagation();
-                //     var routes = map.queryRenderedFeatures({layers:['JapanSki']});
-                //     for (var i = 0; i < routes.length; i++ ){
-                //         var route = routes[i].name
-                //         var routeCoords = routes[i].lngLat
-                //         if (route == e.textContent){
+                    });                        
+        });
 
-                //             map.flyTo({
-                //             // These options control the ending camera position: centered at
-                //             // the target, at zoom level 9, and north up.
-                //             center: routeCoords,
-                //             zoom: 12,
-                //             bearing: 0,
-                
-                //             // These options control the flight curve, making it move
-                //             // slowly and zoom out almost completely before starting
-                //             // to pan.
-                //             speed: 0.2, // make the flying slow
-                //             curve: 1, // change the speed at which it zooms out
-                        
-                //             // This can be any easing function: it takes a number between
-                //             // 0 and 1 and returns another number between 0 and 1.
-                //             easing: function (t) { return t; }   
-                //             });
-                //         } 
-                //     }   
                     
                     
             

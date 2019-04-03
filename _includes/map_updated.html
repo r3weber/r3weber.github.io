@@ -144,7 +144,10 @@
                     document.getElementById(id).addEventListener('click', function(e) {
                         e.preventDefault();
                         e.stopPropagation();
-                        FlyTo(coords);
+                        if (this.id === features[0].properties.name)
+                            var coords = features[0].geometry.coordinates;
+                            FlyTo(coords);
+                        }
                         // var lineFeatures = map.queryRenderedFeatures({layers:['JapanSki']});
                         // for (var i = 0; i < lineFeatures.length; i++){
                         

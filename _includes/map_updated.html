@@ -130,24 +130,27 @@
             
                     document.getElementById(id).addEventListener('click', function(e) {
                         e.preventDefault()
-                        // e.stopPropagation()
-                        // var lineFeatures = map.queryRenderedFeatures({layers:['JapanSki']});
+                        e.stopPropagation()
+                        var lineFeatures = map.queryRenderedFeatures({layers:['JapanSki']});
                         for (var i = 0; i < features.length; i++){
-
-                            var coordinates = features[i].geometry.coordinates;
+                            if (features[i].properties.name == e.id){
+                                var coordinates = features[i].geometry.coordinates;
+                                
+                                
+                                // Pass the first coordinates in the LineString to `lngLatBounds` &
+                                // wrap each coordinate pair in `extend` to include them in the bounds
+                                // result. A variation of this technique could be applied to zooming
+                                // to the bounds of multiple Points or Polygon geomteries - it just
+                                // requires wrapping all the coordinates with the extend method.
+                                var bounds = coordinates.reduce(function(bounds, coord) {
+                                    return bounds.extend(coord);
+                                }, new mapboxgl.LngLatBounds(coordinates[0], coordinates[0]));
                             
-                            // Pass the first coordinates in the LineString to `lngLatBounds` &
-                            // wrap each coordinate pair in `extend` to include them in the bounds
-                            // result. A variation of this technique could be applied to zooming
-                            // to the bounds of multiple Points or Polygon geomteries - it just
-                            // requires wrapping all the coordinates with the extend method.
-                            var bounds = coordinates.reduce(function(bounds, coord) {
-                                return bounds.extend(coord);
-                            }, new mapboxgl.LngLatBounds(coordinates[0], coordinates[0]));
-                        
-                            map.fitBounds(bounds, {
-                            padding: 20
-                            }); 
+                                map.fitBounds(bounds, {
+                                padding: 20
+                                });
+                            }
+
                         }                       
                     });
                 }

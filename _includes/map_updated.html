@@ -129,7 +129,8 @@
             var features = map.queryRenderedFeatures({layers: ['JapanSki']});
             for (var i = 0; i < features.length; i++){
                     var id = features[i].properties.name
-                    var coords = features[i].geometry.coordinates
+                    var coordinates = features[i].geometry.coordinates
+                    var coords = coordindates.lngLat
                     // var property = feature.properties;
                     var link = document.createElement('a');
                     link.href = '#';

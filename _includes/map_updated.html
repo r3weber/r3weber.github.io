@@ -110,9 +110,12 @@
             map.getCanvas().style.cursor = '';
         });
     
-        
-            var features = map.querySourceFeatures('JapanSki');
-           
+        map.on('render', afterChangeComplete);
+        function afterChangeComplete () {
+            if (!map.loaded()) { return } // still not loaded; bail out.
+
+            // now that the map is loaded, it's safe to query the features:
+            var features = map.queryRenderedFeatures({layers: 'JapanSki'});
             for (var i = 0; i < features.length; i++){
                     var id = features[i].properties.name
                     // var property = feature.properties;
@@ -143,6 +146,12 @@
                         });                        
                     });
                 }
+
+                map.off('render', afterChangeComplete); // remove this handler now that we're done.
+            }
+            
+           
+            
         
     
     </script>

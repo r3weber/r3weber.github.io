@@ -131,10 +131,11 @@
                     document.getElementById(id).addEventListener('click', function(e) {
                         e.preventDefault()
                         e.stopPropagation()
-                        var lineFeature = map.queryRenderedFeatures(this.id, {layers:['JapanSki']});
+                        var lineFeatures = map.queryRenderedFeatures({layers:['JapanSki']});
                         // for (var i = 0; i < lineFeatures.length; i++){
                         
-                                var coordinates = lineFeature.geometry.coordinates;
+                                var coordinates = lineFeatures[0].geometry.coordinates;
+                                console.log(coordinates)
                                 
                                 
                                 // Pass the first coordinates in the LineString to `lngLatBounds` &

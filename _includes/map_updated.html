@@ -133,8 +133,8 @@
                         e.stopPropagation()
                         // var lineFeatures = map.queryRenderedFeatures({layers:['JapanSki']});
                         // for (var i = 0; i < lineFeatures.length; i++){
-                        //     if (lineFeatures[i].properties.name == this.id){
-                                var coordinates = e.features[i].geometry.coordinates;
+                            if (id == this.id){
+                                var coordinates = features[i].geometry.coordinates;
                                 
                                 
                                 // Pass the first coordinates in the LineString to `lngLatBounds` &
@@ -149,7 +149,7 @@
                                 map.fitBounds(bounds, {
                                 padding: 20
                                 });
-                        //     }
+                            }
 
                         // }                       
                     });

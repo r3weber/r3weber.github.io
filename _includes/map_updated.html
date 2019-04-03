@@ -131,7 +131,7 @@
                     document.getElementById(id).addEventListener('click', function(e) {
                         e.preventDefault()
                         e.stopPropagation()
-                        var coordinates = e.features[0].geometry.coordinates;
+                        var coordinates = e.id.geometry.coordinates;
                         
                         // Pass the first coordinates in the LineString to `lngLatBounds` &
                         // wrap each coordinate pair in `extend` to include them in the bounds

@@ -132,8 +132,8 @@
                         e.preventDefault()
                         e.stopPropagation()
                         var lineFeatures = map.queryRenderedFeatures({layers:['JapanSki']});
-                        for (var i = 0; i < features.length; i++){
-                            if (features[i].properties.name == e.id){
+                        for (var i = 0; i < lineFeatures.length; i++){
+                            if (lineFeatures[i].properties.name == id){
                                 var coordinates = features[i].geometry.coordinates;
                                 
                                 

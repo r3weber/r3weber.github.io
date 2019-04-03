@@ -133,7 +133,7 @@
                     
                     // var property = feature.properties;
                     var link = document.createElement('a');
-                    link.href = coords;
+                    link.href = '#';
                     link.className = 'active';
                     link.id = id;
                     link.textContent = id;
@@ -144,7 +144,7 @@
                     // document.getElementById(id).addEventListener('click', function(e) {
                     link.onclick = function(e) {
                         e.preventDefault();
-                        e.stopPropagation();
+                        // e.stopPropagation();
                         var lineFeatures = map.queryRenderedFeatures({layers: ['JapanSki']});
                         var clickedFeature = this.id;
                         for (var i = 0; i < lineFeatures.length; i++){

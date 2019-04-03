@@ -131,9 +131,9 @@
                     document.getElementById(id).addEventListener('click', function(e) {
                         e.preventDefault()
                         e.stopPropagation()
-                        var lineFeature = map.queryRenderedFeatures(e.point, {layers:['JapanSki']});
+                        var lineFeatures = map.queryRenderedFeatures({layers:['JapanSki']});
 
-                        var coordinates = lineFeature.geometry.coordinates;
+                        var coordinates = lineFeatures[0].geometry.coordinates;
                         
                         // Pass the first coordinates in the LineString to `lngLatBounds` &
                         // wrap each coordinate pair in `extend` to include them in the bounds

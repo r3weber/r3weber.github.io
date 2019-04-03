@@ -29,7 +29,9 @@
     
    var url = 'https://r3weber.github.io/assets/geoJson/japanSkitracks.geojson';
     map.on('load', function () {
-        
+        window.setInterval(function() {
+            map.getSource('JapanSki').setData(url);
+        }, 2000);
         var geoJson = map.addSource('JapanSki', {type: 'geojson', data: url});
        
         map.addLayer({
@@ -108,7 +110,7 @@
             map.getCanvas().style.cursor = '';
         });
     
-        if (map.getSource("JapanSki").setData({url})) {
+        
             var features = map.queryRenderedFeatures({ layers: ['JapanSki'] });
            
             for (var i = 0; i < features.length; i++){
@@ -141,7 +143,7 @@
                         });                        
                     });
                 }
-        }
+        
     
     </script>
     

@@ -130,7 +130,7 @@
             for (var i = 0; i < features.length; i++){
                     var id = features[i].properties.name
                     var coordinates = features[i].geometry.coordinates
-                    var coords = coordinates.lngLat
+                    
                     // var property = feature.properties;
                     var link = document.createElement('a');
                     link.href = '#';
@@ -144,7 +144,7 @@
                     document.getElementById(id).addEventListener('click', function(e) {
                         e.preventDefault();
                         e.stopPropagation();
-                        if (this.id === features[0].properties.name)
+                        if (this.id === features[0].properties.name){
                             var coords = features[0].geometry.coordinates;
                             FlyTo(coords);
                         }

@@ -133,7 +133,7 @@
                         e.stopPropagation()
                         var lineFeature = map.queryRenderedFeatures(e.point, {layers:['JapanSki']});
 
-                        var coordinates = linefeature.geometry.coordinates;
+                        var coordinates = lineFeature.geometry.coordinates;
                         
                         // Pass the first coordinates in the LineString to `lngLatBounds` &
                         // wrap each coordinate pair in `extend` to include them in the bounds

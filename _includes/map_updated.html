@@ -145,7 +145,7 @@
                         e.preventDefault();
                         e.stopPropagation();
                         if (this.id === features[0].properties.name){
-                            var coords = features[0].geometry.coordinates;
+                            var coords = [features[0].geometry.coordinates];
                             FlyTo(coords);
                         }
                         // var lineFeatures = map.queryRenderedFeatures({layers:['JapanSki']});

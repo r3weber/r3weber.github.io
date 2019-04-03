@@ -108,7 +108,7 @@
             map.getCanvas().style.cursor = '';
         });
     
-        if (map.getLayer("JapanSki")) {
+        if (map.getSource("JapanSki").setData({data: url})) {
             var features = map.queryRenderedFeatures({ layers: ['JapanSki'] });
            
             for (var i = 0; i < features.length; i++){

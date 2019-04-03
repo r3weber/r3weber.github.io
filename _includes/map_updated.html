@@ -128,9 +128,10 @@
                     layers.appendChild(link);
             
             
-                    document.getElementById(id).addEventListener('click', function() {
-                        
-                        var coordinates = url.features[0].geometry.coordinates;
+                    document.getElementById(id).addEventListener('click', function(e) {
+                        e.preventDefault()
+                        e.stopPropagation()
+                        var coordinates = e.features[0].geometry.coordinates;
                         
                         // Pass the first coordinates in the LineString to `lngLatBounds` &
                         // wrap each coordinate pair in `extend` to include them in the bounds

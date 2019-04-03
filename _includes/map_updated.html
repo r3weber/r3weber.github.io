@@ -148,7 +148,7 @@
                         var lineFeatures = map.queryRenderedFeatures({layers: ['JapanSki']});
                         var clickedFeature = this.id;
                         for (var i = 0; i < lineFeatures.length; i++){
-                            if (clickedFeature === lineFeatures.properties.name){
+                            if (clickedFeature === lineFeatures[i].properties.name){
                                 var coordinates = lineFeatures[i].geometry.lngLat;
                 
                                 // Pass the first coordinates in the LineString to `lngLatBounds` &

@@ -145,11 +145,12 @@
                     link.onclick = function(e) {
                         e.preventDefault();
                         e.stopPropagation();
-                        coordinates = e.lngLat;
+                        var lineFeatures = map.queryRenderedFeatures({layers: ['JapanSki']});
+                        var clickedFeature = this.id;
+                        for (var i = 0; i < lineFeatures.length; i++){
+                            if (clickedfeature === lineFeatures.properties.name){
+                                var coordinates = lineFeatures[i].geometry.lngLat;
                 
-                        
-                                
-                            
                                 // Pass the first coordinates in the LineString to `lngLatBounds` &
                                 // wrap each coordinate pair in `extend` to include them in the bounds
                                 // result. A variation of this technique could be applied to zooming
@@ -162,13 +163,11 @@
                                 map.fitBounds(bounds, {
                                 padding: 20
                                 });
-                        
-                        
+                            }
+                        }
                     };
-                        // var lineFeatures = map.queryRenderedFeatures({layers:['JapanSki']});
-                        // for (var i = 0; i < lineFeatures.length; i++){
                         
-                                // var coordinates = lineFeatures[0].geometry.lngLat;
+                        
 
                             // }
 

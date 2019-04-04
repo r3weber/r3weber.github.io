@@ -111,12 +111,12 @@
         });
     
         map.on('render', afterChangeComplete);
-        function FlyTo(coordinates){
+        function FlyOut(cHomecoords){
             map.flyTo({
-                center: coordinates,
-                zoom: 9,
-                speed: 0.2,
-                curve: 1,
+                center: Homecoords,
+                zoom: 7,
+                speed: 1.5,
+                curve: 3,
                 easing(t) {
                 return t;
                         }
@@ -177,9 +177,8 @@
                                 homeLink.onclick = function(e){
                                 e.preventDefault()
                                 e.stopPropagation()
-                                coordinates = [141.20553, 42.95139]
-                                map.zoomTo(7, coordinates)
-                                };                 
+                                var Homecoords = [141.20553, 42.95139]
+                                FlyOut(Homecoords)                
                             }
 
                         }

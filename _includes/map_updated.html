@@ -135,7 +135,7 @@
             var homeLink = document.getElementById('menu');
             homeLink.appendChild(home)
             homeLink.onclick = function(e){
-                e.preventdefault()
+                e.preventDefault()
                 coordinates = [141.20553, 42.95139]
                 map.zoomTo(7, coordinates)
             };

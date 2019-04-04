@@ -150,7 +150,7 @@
                         for (var i = 0; i < lineFeatures.length; i++){
                             if (clickedFeature === lineFeatures[i].properties.name){
                                 var coordinates = lineFeatures[i].geometry.coordinates;
-                                FlyTo(coordinates);
+                                FlyTo(coordinates.lngLat);
                                 // Pass the first coordinates in the LineString to `lngLatBounds` &
                                 // wrap each coordinate pair in `extend` to include them in the bounds
                                 // result. A variation of this technique could be applied to zooming

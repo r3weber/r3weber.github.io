@@ -145,7 +145,7 @@
                     link.onclick = function(e) {
                         e.preventDefault();
                         // e.stopPropagation();
-                        var lineFeatures = map.queryRenderedFeatures({layers: ['JapanSki']});
+                        var lineFeatures = map.querySourceFeatures('JapanSki');
                         var clickedFeature = this.id;
                         for (var i = 0; i < lineFeatures.length; i++){
                             if (clickedFeature === lineFeatures[i].properties.name){

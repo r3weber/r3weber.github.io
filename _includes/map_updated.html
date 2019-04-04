@@ -139,6 +139,7 @@
             home.id = 'Home'
             var homeLink = document.getElementById('menu');
             homeLink.appendChild(home)
+            homeLink.preventDefault()
             
             var features = map.queryRenderedFeatures({layers: ['JapanSki']});
             var options = {tolerance: 0.01, highQuality: false};

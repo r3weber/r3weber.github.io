@@ -126,7 +126,7 @@
             if (!map.loaded()) { return } // still not loaded; bail out.
 
             // now that the map is loaded, it's safe to query the features:
-            var features = map.queryRenderedFeatures({layers: ['JapanSki']});
+            
             var home = document.createElement('a');
             home.href = '#'
             home.classname = 'active'
@@ -134,12 +134,8 @@
             home.id = 'Home'
             var homeLink = document.getElementById('menu');
             homeLink.appendChild(home)
-            homeLink.onclick = function(e){
-                e.preventDefault()
-                coordinates = [141.20553, 42.95139]
-                map.zoomTo(7, coordinates)
-            };
-
+            
+            var features = map.queryRenderedFeatures({layers: ['JapanSki']});
             for (var i = 0; i < features.length; i++){
                     var id = features[i].properties.name
                     var coords = features[i].geometry.coordinates
@@ -157,7 +153,7 @@
                     // document.getElementById(id).addEventListener('click', function(e) {
                     link.onclick = function(e) {
                         e.preventDefault();
-                        // e.stopPropagation();
+                        e.stopPropagation();
                         var lineFeatures = map.querySourceFeatures('JapanSki');
                         var clickedFeature = this.id;
                         for (var i = 0; i < lineFeatures.length; i++){
@@ -176,7 +172,16 @@
                                 map.fitBounds(bounds, {
                                 padding: 20
                                 });
+
+                            } else{
+                                homeLink.onclick = function(e){
+                                e.preventDefault()
+                                e.stopPropagation()
+                                coordinates = [141.20553, 42.95139]
+                                map.zoomTo(7, coordinates)
+                                };                 
                             }
+
                         }
                     };
                         

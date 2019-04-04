@@ -177,22 +177,24 @@
                                 homeLink.onclick = function(e){
                                 e.preventDefault()
                                 e.stopPropagation()
-                                var Homecoords = [141.20553, 42.95139]
-                                FlyOut(Homecoords)                
-                            }
+                                var Homecoords = [141.20553, 42.95139];
+                                FlyOut(Homecoords);                
+                                };
 
+                            }
                         }
-                    };
                         
                         
 
                             // }
 
                         // }                       
-            };
+                    };
                 
 
                 map.off('render', afterChangeComplete); // remove this handler now that we're done.
+                };
+                
         };
             
     });       

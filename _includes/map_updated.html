@@ -23,8 +23,12 @@
         container: 'map',
         style: 'mapbox://styles/r3weber1/cjsp27atf0lfd1fqntu4h01gz',
         center: [141.20553, 42.95139],
-        zoom: 7
-    });
+        zoom: 7,
+        attributionControl: false
+    }
+    .addControl(new mapboxgl.AttributionControl({
+        compact: true    
+    })));
     var nav = new mapboxgl.NavigationControl();
     map.addControl(nav, 'top-left');
     map.addControl(new mapboxgl.FullscreenControl());

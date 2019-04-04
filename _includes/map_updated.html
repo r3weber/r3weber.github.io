@@ -141,10 +141,12 @@
             homeLink.appendChild(home)
             
             var features = map.queryRenderedFeatures({layers: ['JapanSki']});
+            var options = {tolerance: 0.01, highQuality: false};
+            turf.simplify(features, options);
             for (var i = 0; i < features.length; i++){
                     var id = features[i].properties.name
                     var coords = features[i].geometry.coordinates
-                    turf.cleanCoords(features[i]).geometry.coordinates;
+                    
                     
                     // var property = feature.properties;
                     var link = document.createElement('a');

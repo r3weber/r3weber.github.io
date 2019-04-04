@@ -142,7 +142,9 @@
             
             var features = map.queryRenderedFeatures({layers: ['JapanSki']});
             var options = {tolerance: 0.01, highQuality: false};
-            turf.simplify(features, options);
+            geoSon = turf.lineString(features)
+            
+            console.log(turf.simplify(geoSon, options));
             for (var i = 0; i < features.length; i++){
                     var id = features[i].properties.name
                     var coords = features[i].geometry.coordinates

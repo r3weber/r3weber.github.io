@@ -4,4 +4,4 @@
 
 layout: home
 ---
-<img src="/assets/images/IMG_3878.jpg" alt="Otis" style="width:500px;height:500px;">
+<img src="/assets/images/IMG_3878.jpg" alt="Otis" style="width:400px;height:500px;">

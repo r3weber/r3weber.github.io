@@ -127,6 +127,18 @@
 
             // now that the map is loaded, it's safe to query the features:
             var features = map.queryRenderedFeatures({layers: ['JapanSki']});
+            var home = document.createElement('a');
+            home.href = '#'
+            home.classname = 'active'
+            home.textContent = 'Zoom Out'
+            home.id = 'Home'
+            var homeLink = document.getElementById('menu');
+            homeLink.appendChild(home)
+            homelink.onclick = function(e){
+                coordinates = [141.20553, 42.95139]
+                map.zoomTo(7, coordinates)
+            };
+
             for (var i = 0; i < features.length; i++){
                     var id = features[i].properties.name
                     var coords = features[i].geometry.coordinates
@@ -150,19 +162,19 @@
                         for (var i = 0; i < lineFeatures.length; i++){
                             if (clickedFeature === lineFeatures[i].properties.name){
                                 var coordinates = lineFeatures[i].geometry.coordinates;
-                                FlyTo(coordinates.lngLat);
+                                // FlyTo(coordinates.lngLat);
                                 // Pass the first coordinates in the LineString to `lngLatBounds` &
                                 // wrap each coordinate pair in `extend` to include them in the bounds
                                 // result. A variation of this technique could be applied to zooming
                                 // to the bounds of multiple Points or Polygon geomteries - it just
                                 // requires wrapping all the coordinates with the extend method.
-                                // var bounds = coordinates.reduce(function(bounds, coord) {
-                                //     return bounds.extend(coord);
-                                // }, new mapboxgl.LngLatBounds(coordinates[0], coordinates[0]));
+                                var bounds = coordinates.reduce(function(bounds, coord) {
+                                    return bounds.extend(coord);
+                                }, new mapboxgl.LngLatBounds(coordinates[0], coordinates[0]));
                             
-                                // map.fitBounds(bounds, {
-                                // padding: 20
-                                // });
+                                map.fitBounds(bounds, {
+                                padding: 20
+                                });
                             }
                         }
                     };

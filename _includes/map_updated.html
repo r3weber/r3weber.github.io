@@ -149,7 +149,7 @@
                     var id = features[i].properties.name
                     var coords = features[i].geometry.coordinates
                     geoSon = turf.lineString(coords);
-                    console.log(turf.simplify(geoSon, options));
+                    turf.bezierSpline(line);
                     
                     // var property = feature.properties;
                     var link = document.createElement('a');

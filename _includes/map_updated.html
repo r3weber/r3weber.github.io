@@ -10,7 +10,7 @@
         }
        
     </style>
-    
+    <script> src= '/outTurf.js'</script>
     <div id='map'>
        <nav id="menu"></nav> 
     </div>
@@ -144,6 +144,7 @@
             for (var i = 0; i < features.length; i++){
                     var id = features[i].properties.name
                     var coords = features[i].geometry.coordinates
+                    turf.cleanCoords(features[i]).geometry.coordinates;
                     
                     // var property = feature.properties;
                     var link = document.createElement('a');

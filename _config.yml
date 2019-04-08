@@ -22,7 +22,9 @@ url: "r3weber.github.io" # the base hostname & protocol for your site, e.g. http
 twitter_username: r3weber
 background-image: url(/assets/images/IMG_3878.jpg)
 github_username:  r3weber
-
+# Disqus Comments
+disqus:
+  shortname: r3weber
 # Build settings
 markdown: kramdown
 theme: minima

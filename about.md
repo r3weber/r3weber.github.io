@@ -4,6 +4,6 @@ title: About
 permalink: /about/
 ---
 
-Background is in GIS. This site was created using Jekyll and is one of many things I like to kill time with!
+Background is in GIS. This site was created using Jekyll and is one of many things I like to kill time with. I try to utilize Mapbox GL JS for mapping stuff and use various apps for offline data collection. 
 
 <img src="/assets/images/tokyo4.jpg" alt="Rob" style="width:300px;height:200px; float: left; border-radius: 8px; border: 2px solid grey">

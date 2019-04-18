@@ -55,7 +55,9 @@
         map.on('click', 'JapanSki', function (e) {
             var coordinates = e.features[0].geometry.coordinates.slice();
             var description = e.features[0].properties.name;
-    
+            var distance = e.features[0].properties.distance_miles;
+            var zmax = e.features[0].properties.max_z;
+            var zmin = e.features[0].properties.min_z;
             // Ensure that if the map is zoomed out such that multiple
             // copies of the feature are visible, the popup appears
             // over the copy being pointed to.
@@ -82,22 +84,22 @@
                 if (description == 'Mt Furano'){
                 new mapboxgl.Popup()
                     .setLngLat(e.lngLat)
-                    .setHTML(`<h1> ${description} </h1> <object type= "text/html" data="{{"/furanoSlider.html"| relative_url }}" style="height:350px"></object>`)
+                    .setHTML(`<h1> ${description} </h1><p> ${distance} Miles\n${maxz - minz} Ft Gain'</p> <object type= "text/html" data="{{"/furanoSlider.html"| relative_url }}" style="height:350px"></object>`)
                     .addTo(map);  
                 } else if (description == 'Mt. Yotei'){
                     new mapboxgl.Popup()
                     .setLngLat(e.lngLat)
-                    .setHTML(`<h1> ${description} </h1> <object type= "text/html" data="{{"/yoteiSlider.html"| relative_url }}" style="height:350px"></object>`)
+                    .setHTML(`<h1> ${description} </h1> <p> ${distance} Miles\n${maxz - minz} Ft Gain'</p> <object type= "text/html" data="{{"/yoteiSlider.html"| relative_url }}" style="height:350px"></object>`)
                     .addTo(map); 
                 } else if (description == 'Mt. Shiribetsu'){
                     new mapboxgl.Popup()
                     .setLngLat(e.lngLat)
-                    .setHTML(`<h1> ${description} </h1> <object type= "text/html" data="{{"/shiribetsuSlider.html"| relative_url }}" style="height:350px"></object>`)
+                    .setHTML(`<h1> ${description} </h1> <p> ${distance} Miles\n${maxz - minz} Ft Gain'</p> <object type= "text/html" data="{{"/shiribetsuSlider.html"| relative_url }}" style="height:350px"></object>`)
                     .addTo(map);
                 } else {
                     new mapboxgl.Popup()
                     .setLngLat(e.lngLat)
-                    .setHTML(`<h1> ${description} </h1> <object type= "text/html" data="{{"/iwaonupuriSlider.html"| relative_url }}" style="height:350px"></object>`)
+                    .setHTML(`<h1> ${description} </h1> <p> ${distance} Miles\n${maxz - minz} Ft Gain'</p> <object type= "text/html" data="{{"/iwaonupuriSlider.html"| relative_url }}" style="height:350px"></object>`)
                     .addTo(map);
                 }
         

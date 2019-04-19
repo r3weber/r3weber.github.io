@@ -49,16 +49,16 @@
                 },            
         });
         // add markers to map
-            geoJson.features.forEach(function(marker) {
+        url.features.forEach(function(marker) {
 
-            // create a HTML element for each feature
-            var el = document.createElement('div');
-            el.className = 'marker';
+        // create a HTML element for each feature
+        var el = document.createElement('div');
+        el.className = 'marker';
 
-            // make a marker for each feature and add to the map
-            new mapboxgl.Marker(el)
-            .setLngLat(marker.geometry.coordinates)
-            .addTo(map);
+        // make a marker for each feature and add to the map
+        new mapboxgl.Marker(el)
+        .setLngLat(marker.geometry.coordinates)
+        .addTo(map);
             });
     
    

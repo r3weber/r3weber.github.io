@@ -39,35 +39,35 @@
                 'line-width': 6,
                 },            
         });
-    map.addLayer({
-        "id": "markers",
-        "interactive": true,
-        "type": "symbol",
-        "source": "markers",
-        "layout": {
-            "icon-image": "park-15",
-            "icon-size": 1.25
-        },
-        "paint": {
-            /*"text-size": 10,*/
-        }
-    });
+    // map.addLayer({
+    //     "id": "markers",
+    //     "interactive": true,
+    //     "type": "symbol",
+    //     "source": "markers",
+    //     "layout": {
+    //         "icon-image": "park-15",
+    //         "icon-size": 1.25
+    //     },
+    //     "paint": {
+    //         /*"text-size": 10,*/
+    //     }
+    // });
 
 
     
-    // geojson.features.forEach(function(marker) {
+    run_points.features.forEach(function(marker) {
         
-    //     // create a HTML element for each feature
-    //     var el = document.createElement('div');
-    //     el.className = 'marker';
+        // create a HTML element for each feature
+        var el = document.createElement('div');
+        el.className = 'marker';
 
-    //     // make a marker for each feature and add to the map
-    //     new mapboxgl.Marker(el)
-    //     .setLngLat(marker.geometry.coordinates)
-    //     setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
-    //         .setHTML('<h3>' + marker.properties.desc + '</h3><p>' + marker.properties.distance + '</p>'))
-    //     .addTo(map);
-    //         });
+        // make a marker for each feature and add to the map
+        new mapboxgl.Marker(el)
+        .setLngLat(marker.geometry.coordinates)
+        setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
+            .setHTML('<h3>' + marker.properties.desc + '</h3><p>' + marker.properties.distance + '</p>'))
+        .addTo(map);
+            });
     map.addControl(new mapboxgl.AttributionControl({
         compact: true    
     }));

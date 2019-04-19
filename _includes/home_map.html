@@ -5,9 +5,9 @@
             max-width: 400;
             font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
         }
-        .mapboxgl-popup-content {
+        /* .mapboxgl-popup-content {
             height:200px;
-        }
+        } */
        
     </style>
     
@@ -28,21 +28,32 @@
    
    map.on('load', function () {
     map.addSource('runs', {type: 'geojson', data: geojson});
-    map.getSource('runs').setData({geojson});
+    // map.getSource('runs').setData({geojson});
+    map.addLayer({
+            "id": "runs",
+            "type": "line",
+            "source": "runs",
+            paint: {
+                'line-color': 'blue',
+                'line-width': 6,
+                },            
+        });
 
-    geojson.features.forEach(function(marker) {
+
+    
+    // geojson.features.forEach(function(marker) {
         
-        // create a HTML element for each feature
-        var el = document.createElement('div');
-        el.className = 'marker';
+    //     // create a HTML element for each feature
+    //     var el = document.createElement('div');
+    //     el.className = 'marker';
 
-        // make a marker for each feature and add to the map
-        new mapboxgl.Marker(el)
-        .setLngLat(marker.geometry.coordinates)
-        setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
-            .setHTML('<h3>' + marker.properties.desc + '</h3><p>' + marker.properties.distance + '</p>'))
-        .addTo(map);
-            });
+    //     // make a marker for each feature and add to the map
+    //     new mapboxgl.Marker(el)
+    //     .setLngLat(marker.geometry.coordinates)
+    //     setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
+    //         .setHTML('<h3>' + marker.properties.desc + '</h3><p>' + marker.properties.distance + '</p>'))
+    //     .addTo(map);
+    //         });
      map.addControl(new mapboxgl.AttributionControl({
         compact: true    
     }));

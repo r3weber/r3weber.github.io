@@ -39,13 +39,16 @@
                 'line-width': 6,
                 },            
         });
+    map.loadImage('/assets/images/unnamed.jpg', function(error, image) {
+        if (error) throw error;
+    map.addImage('shoe', image);
     map.addLayer({
         "id": "markers",
         "interactive": true,
         "type": "symbol",
         "source": "markers",
         "layout": {
-            "icon-image": "/assets/images/unnamed.jpg",
+            "icon-image": 'shoe',
             "icon-size": 4
         },
         "paint": {

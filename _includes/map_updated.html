@@ -55,7 +55,7 @@
         map.on('click', 'JapanSki', function (e) {
             var coordinates = e.features[0].geometry.coordinates.slice();
             var description = e.features[0].properties.name;
-            var distance = e.features[0].properties.distance_miles;
+            var distance = e.features[0].properties.distance_miles.toFixed(2);
             var zmax = e.features[0].properties.max_z;
             var zmin = e.features[0].properties.min_z;
             var gain = (zmax-zmin).toFixed(0);

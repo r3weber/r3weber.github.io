@@ -20,7 +20,7 @@
     var map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/r3weber1/cjsp27atf0lfd1fqntu4h01gz',
-        center: [141.20553, 42.95139],
+        center: [105.2705, 40.0150],
         zoom: 7,
         attributionControl: false
     });
@@ -121,25 +121,22 @@
 
             // now that the map is loaded, it's safe to query the features:
             
-            var home = document.createElement('a');
-            home.href = '#'
-            home.className = 'active'
-            home.textContent = 'Zoom Out'
-            home.id = 'Home'
-            var homeLink = document.getElementById('menu');
-            homeLink.appendChild(home);
+            // var home = document.createElement('a');
+            // home.href = '#'
+            // home.className = 'active'
+            // home.textContent = 'Zoom Out'
+            // home.id = 'Home'
+            // var homeLink = document.getElementById('menu');
+            // homeLink.appendChild(home);
             
             
             var features = map.queryRenderedFeatures({layers: ['runs']});
-            var options = {tolerance: 0.01, highQuality: false};
-            
-            
+
             
             for (var i = 0; i < features.length; i++){
-                    var id = features[i].properties.name
+                    var id = features[i].properties.desc
                     var coords = features[i].geometry.coordinates
-                    geoSon = turf.lineString(coords);
-                    turf.bezierSpline(geoSon);
+                    
                     
                     // var property = feature.properties;
                     var link = document.createElement('a');
@@ -175,10 +172,17 @@
                                 });
 
                             } else{
+                                var home = document.createElement('a');
+                                home.href = '#'
+                                home.className = 'active'
+                                home.textContent = 'Zoom Out'
+                                home.id = 'Home'
+                                var homeLink = document.getElementById('menu');
+                                homeLink.appendChild(home);
                                 homeLink.onclick = function(e){
                                 e.preventDefault()
                                 e.stopPropagation()
-                                var Homecoords = [141.20553, 42.95139];
+                                var Homecoords = [105.2705, 40.0150];
                                 FlyOut(Homecoords);                
                                 };
 

@@ -10,7 +10,7 @@
         }
        
     </style>
-    <script src="https://npmcdn.com/@turf/turf/turf.min.js"></script>
+    
     <div id='map'>
        <nav id="menu"></nav> 
     </div>
@@ -48,6 +48,18 @@
                 'line-width': 4,
                 },            
         });
+        // add markers to map
+            geoJson.features.forEach(function(marker) {
+
+            // create a HTML element for each feature
+            var el = document.createElement('div');
+            el.className = 'marker';
+
+            // make a marker for each feature and add to the map
+            new mapboxgl.Marker(el)
+            .setLngLat(marker.geometry.coordinates)
+            .addTo(map);
+            });
     
    
         // When a click event occurs on a feature in the places layer, open a popup at the

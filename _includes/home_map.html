@@ -51,7 +51,7 @@
         // add markers to map
         var tracks = map.queryRenderedFeatures({layers: ['runs']});
         tracks.features.forEach(function(marker) {
-
+        console.log(tracks)
         // create a HTML element for each feature
         var el = document.createElement('div');
         el.className = 'marker';

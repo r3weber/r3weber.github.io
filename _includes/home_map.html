@@ -28,6 +28,7 @@
    
    map.on('load', function () {
     var geoJson = map.addSource('runs', {type: 'geojson', data: url});
+    console.log(geoJson);
     geoJson.features.forEach(function(marker) {
         
         // create a HTML element for each feature

@@ -64,10 +64,10 @@
     //     if (err) throw err;
         // if there are features within the given radius of the click event,
         // fly to the location of the click event
-        if (features.length) {
+        if (e.features.length) {
             // Get coordinates from the symbol and center the map on those coordinates
-            map.flyTo({center: features[0].geometry.coordinates});
-            var featureName = features[0].properties.Location;
+            map.flyTo({center: e.features[0].geometry.coordinates});
+            var featureName = e.features[0].properties.Location;
             var tooltip = new mapboxgl.Popup()
                 .setLngLat(e.lngLat)
                 .setHTML('<p>' + featureName + '</p>')

@@ -26,6 +26,7 @@
         attributionControl: false
     });
    var geoJson = map.addSource('runs', {type: 'geojson', data: url});
+   map.on('load', function () {
     geoJson.features.forEach(function(marker) {
         
         // create a HTML element for each feature
@@ -46,7 +47,7 @@
     map.addControl(nav, 'top-left');
     map.addControl(new mapboxgl.FullscreenControl());
      // Add a layer showing the places.      
-            
+   });       
         
     
     </script>

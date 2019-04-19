@@ -41,20 +41,21 @@
         });
     map.loadImage('/assets/images/unnamed.jpg', function(error, image) {
         if (error) throw error;
-    map.addImage('shoe', image);
-    map.addLayer({
-        "id": "markers",
-        "interactive": true,
-        "type": "symbol",
-        "source": "markers",
-        "layout": {
-            "icon-image": 'shoe',
-            "icon-size": 4
-        },
-        "paint": {
-            /*"text-size": 10,*/
-        }
-    });
+        map.addImage('shoe', image);
+        map.addLayer({
+            "id": "markers",
+            "interactive": true,
+            "type": "symbol",
+            "source": "markers",
+            "layout": {
+                "icon-image": 'shoe',
+                "icon-size": 4
+            },
+            "paint": {
+                /*"text-size": 10,*/
+            }
+        });
+   });
 
 
     
@@ -78,8 +79,8 @@
     map.addControl(nav, 'top-left');
     map.addControl(new mapboxgl.FullscreenControl());
      // Add a layer showing the places.      
-   });       
-        
+       
+});       
     
     </script>
     

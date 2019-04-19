@@ -58,10 +58,10 @@
         });
    });
    map.on('click', function (e) {
-    // Use featuresAt to get features within a given radius of the click event
-    // Use layer option to avoid getting results from other layers
-    map.featuresAt(e.point, {layer: 'markers', radius: 10, includeGeometry: true}, function (err, features) {
-        if (err) throw err;
+    // // Use featuresAt to get features within a given radius of the click event
+    // // Use layer option to avoid getting results from other layers
+    // map.featuresAt(e.point, {layer: 'markers', radius: 10, includeGeometry: true}, function (err, features) {
+    //     if (err) throw err;
         // if there are features within the given radius of the click event,
         // fly to the location of the click event
         if (features.length) {
@@ -74,7 +74,15 @@
                 .addTo(map);
         }
     });
-});
+
+    map.on('mouseenter', 'markers', function () {
+                map.getCanvas().style.cursor = 'pointer';
+            });
+        
+            // Change it back to a pointer when it leaves.
+    map.on('mouseleave', 'markers', function () {
+                map.getCanvas().style.cursor = '';
+            });
 
     
     // run_points.features.forEach(function(marker) {

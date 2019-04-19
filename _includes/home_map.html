@@ -27,7 +27,7 @@
     });
    
    map.on('load', function () {
-    map.addSource('runs', {type: 'geojson', data: url});
+    map.addSource('runs', {type: 'geojson', data: geojson});
     map.getSource('runs').setData({geojson});
 
     geojson.features.forEach(function(marker) {

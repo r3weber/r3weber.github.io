@@ -39,19 +39,18 @@
         // }, 2000);
         var geoJson = map.addSource('runs', {type: 'geojson', data: url});
        
-        map.addLayer({
-            "id": "runs",
-            "type": "line",
-            "source": "runs",
-            paint: {
-                'line-color': 'red',
-                'line-width': 4,
-                },            
+        // map.addLayer({
+        //     "id": "runs",
+        //     "type": "line",
+        //     "source": "runs",
+        //     paint: {
+        //         'line-color': 'red',
+        //         'line-width': 4,
+        //         },            
         });
         // add markers to map
-        var tracks = map.queryRenderedFeatures({layers: ['runs']});
-        console.log(tracks)
-        tracks.features.forEach(function(marker) {
+        
+        geoJson.features.forEach(function(marker) {
         
         // create a HTML element for each feature
         var el = document.createElement('div');

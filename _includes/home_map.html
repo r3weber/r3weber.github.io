@@ -49,6 +49,7 @@
                 },            
         });
         // add markers to map
+        var features = map.queryRenderedFeatures({layers: ['runs']});
         features.forEach(function(marker) {
 
         // create a HTML element for each feature

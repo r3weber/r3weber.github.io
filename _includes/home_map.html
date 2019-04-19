@@ -17,7 +17,7 @@
     <script>
     mapboxgl.accessToken = 'pk.eyJ1IjoicjN3ZWJlcjEiLCJhIjoiY2lyM3lhc3FnMDFrZ2Zwbm04cncwa2JkMiJ9.AeYZqyDiobmuxAVfIKE8gA';
     var url = 'https://r3weber.github.io/assets/geoJson/runs.geojson';
-    var geoJson = map.addSource('runs', {type: 'geojson', data: url});
+    
     var map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/r3weber1/cjsp27atf0lfd1fqntu4h01gz',
@@ -25,7 +25,8 @@
         zoom: 4,
         attributionControl: false
     });
-   geoJson.features.forEach(function(marker) {
+//    var geoJson = map.addSource('runs', {type: 'geojson', data: url});
+    url.features.forEach(function(marker) {
         
         // create a HTML element for each feature
         var el = document.createElement('div');

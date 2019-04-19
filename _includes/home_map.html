@@ -16,7 +16,7 @@
     </div>
     <script>
     mapboxgl.accessToken = 'pk.eyJ1IjoicjN3ZWJlcjEiLCJhIjoiY2lyM3lhc3FnMDFrZ2Zwbm04cncwa2JkMiJ9.AeYZqyDiobmuxAVfIKE8gA';
-    var url = 'https://r3weber.github.io/assets/geoJson/runs.geojson';
+    var geojson = 'https://r3weber.github.io/assets/geoJson/runs.geojson';
     
     var map = new mapboxgl.Map({
         container: 'map',
@@ -27,8 +27,8 @@
     });
    
    map.on('load', function () {
-    // var geojson = map.addSource('runs', {type: 'geojson', data: url});
-    var geojson = map.getSource('runs').setData({url});
+    map.addSource('runs', {type: 'geojson', data: url});
+    map.getSource('runs').setData({geojson});
 
     geojson.features.forEach(function(marker) {
         

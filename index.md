@@ -4,3 +4,4 @@
 
 layout: home
 ---
+{%include home_map.html%}

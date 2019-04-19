@@ -1,0 +1,207 @@
+<body>
+
+    <style>
+        .mapboxgl-popup {
+            max-width: 400;
+            font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+        }
+        .mapboxgl-popup-content {
+            height:400px;
+        }
+       
+    </style>
+    <script src="https://npmcdn.com/@turf/turf/turf.min.js"></script>
+    <div id='map'>
+       <nav id="menu"></nav> 
+    </div>
+    <script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoicjN3ZWJlcjEiLCJhIjoiY2lyM3lhc3FnMDFrZ2Zwbm04cncwa2JkMiJ9.AeYZqyDiobmuxAVfIKE8gA';
+    
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/r3weber1/cjsp27atf0lfd1fqntu4h01gz',
+        center: [141.20553, 42.95139],
+        zoom: 7,
+        attributionControl: false
+    });
+    map.addControl(new mapboxgl.AttributionControl({
+        compact: true    
+    }));
+    var nav = new mapboxgl.NavigationControl();
+    map.addControl(nav, 'top-left');
+    map.addControl(new mapboxgl.FullscreenControl());
+     // Add a layer showing the places.
+    
+   var url = 'https://r3weber.github.io/assets/geoJson/runs.geojson';
+    map.on('load', function () {
+        // window.setInterval(function() {
+        //     map.getSource('JapanSki').setData(url);
+        // }, 2000);
+        var geoJson = map.addSource('runs', {type: 'geojson', data: url});
+       
+        map.addLayer({
+            "id": "runs",
+            "type": "line",
+            "source": "runs",
+            paint: {
+                'line-color': 'red',
+                'line-width': 4,
+                },            
+        });
+    
+   
+        // When a click event occurs on a feature in the places layer, open a popup at the
+        // location of the feature, with description HTML from its properties.
+        map.on('click', 'runs', function (e) {
+            var coordinates = e.features[0].geometry.coordinates.slice();
+            var description = e.features[0].properties.desc;
+            var distance = e.features[0].properties.distance.toFixed(2);
+            // var zmax = e.features[0].properties.max_z;
+            // var zmin = e.features[0].properties.min_z;
+            // var gain = (zmax-zmin).toFixed(0);
+
+            // Ensure that if the map is zoomed out such that multiple
+            // copies of the feature are visible, the popup appears
+            // over the copy being pointed to.
+            while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+                coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+            }
+            map.flyTo({
+            // These options control the ending camera position: centered at
+            // the target, at zoom level 9, and north up.
+                center: e.lngLat,
+                zoom: 12,
+                bearing: 0,
+     
+                // These options control the flight curve, making it move
+            // slowly and zoom out almost completely before starting
+            // to pan.
+            speed: 1.5, // make the flying slow
+            curve: 1, // change the speed at which it zooms out
+            
+            // This can be any easing function: it takes a number between
+            // 0 and 1 and returns another number between 0 and 1.
+            easing: function (t) { return t; }
+            });
+                // if (description == 'Mt Furano'){
+                new mapboxgl.Popup()
+                    .setLngLat(e.lngLat)
+                    .setHTML(`<h1> ${description} </h1><p> ${distance} </p>`)
+                    .addTo(map);  
+               
+        
+        });
+    
+
+    
+        // Change the cursor to a pointer when the mouse is over the places layer.
+        map.on('mouseenter', 'runs', function () {
+            map.getCanvas().style.cursor = 'pointer';
+        });
+    
+        // Change it back to a pointer when it leaves.
+        map.on('mouseleave', 'runs', function () {
+            map.getCanvas().style.cursor = '';
+        });
+    
+        map.on('render', afterChangeComplete);
+        function FlyOut(Homecoords){
+            map.flyTo({
+                center: Homecoords,
+                zoom: 7,
+                speed: 1.5,
+                curve: 3,
+                easing(t) {
+                return t;
+                        }
+                }); 
+            };
+        function afterChangeComplete () {
+            if (!map.loaded()) { return } // still not loaded; bail out.
+
+            // now that the map is loaded, it's safe to query the features:
+            
+            var home = document.createElement('a');
+            home.href = '#'
+            home.className = 'active'
+            home.textContent = 'Zoom Out'
+            home.id = 'Home'
+            var homeLink = document.getElementById('menu');
+            homeLink.appendChild(home);
+            
+            
+            var features = map.queryRenderedFeatures({layers: ['runs']});
+            var options = {tolerance: 0.01, highQuality: false};
+            
+            
+            
+            for (var i = 0; i < features.length; i++){
+                    var id = features[i].properties.name
+                    var coords = features[i].geometry.coordinates
+                    geoSon = turf.lineString(coords);
+                    turf.bezierSpline(geoSon);
+                    
+                    // var property = feature.properties;
+                    var link = document.createElement('a');
+                    link.href = '#';
+                    link.className = 'active';
+                    link.id = id;
+                    link.textContent = id;
+                    var layers = document.getElementById('menu');
+                    layers.appendChild(link);
+            
+            
+                    // document.getElementById(id).addEventListener('click', function(e) {
+                    link.onclick = function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        var lineFeatures = map.querySourceFeatures('runs');
+                        var clickedFeature = this.id;
+                        for (var i = 0; i < lineFeatures.length; i++){
+                            if (clickedFeature === lineFeatures[i].properties.name){
+                                var coordinates = lineFeatures[i].geometry.coordinates;
+                                // FlyTo(coordinates.lngLat);
+                                // Pass the first coordinates in the LineString to `lngLatBounds` &
+                                // wrap each coordinate pair in `extend` to include them in the bounds
+                                // result. A variation of this technique could be applied to zooming
+                                // to the bounds of multiple Points or Polygon geomteries - it just
+                                // requires wrapping all the coordinates with the extend method.
+                                var bounds = coordinates.reduce(function(bounds, coord) {
+                                    return bounds.extend(coord);
+                                }, new mapboxgl.LngLatBounds(coordinates[0], coordinates[0]));
+                            
+                                map.fitBounds(bounds, {
+                                padding: 20
+                                });
+
+                            } else{
+                                homeLink.onclick = function(e){
+                                e.preventDefault()
+                                e.stopPropagation()
+                                var Homecoords = [141.20553, 42.95139];
+                                FlyOut(Homecoords);                
+                                };
+
+                            }
+                        }
+                        
+                        
+
+                            // }
+
+                        // }                       
+                    };
+                
+
+                map.off('render', afterChangeComplete); // remove this handler now that we're done.
+                };
+                
+        };
+            
+    });       
+            
+        
+    
+    </script>
+    
+</body>

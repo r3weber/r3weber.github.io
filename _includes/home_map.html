@@ -47,7 +47,7 @@
         //         'line-color': 'red',
         //         'line-width': 4,
         //         },            
-        });
+        // });
         // add markers to map
         
         geoJson.features.forEach(function(marker) {
@@ -59,51 +59,53 @@
         // make a marker for each feature and add to the map
         new mapboxgl.Marker(el)
         .setLngLat(marker.geometry.coordinates)
+        setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
+            .setHTML('<h3>' + marker.properties.desc + '</h3><p>' + marker.properties.distance + '</p>'))
         .addTo(map);
             });
     
    
         // When a click event occurs on a feature in the places layer, open a popup at the
         // location of the feature, with description HTML from its properties.
-        map.on('click', 'runs', function (e) {
-            var coordinates = e.features[0].geometry.coordinates.slice();
-            var description = e.features[0].properties.desc;
-            var distance = e.features[0].properties.distance.toFixed(2);
-            // var zmax = e.features[0].properties.max_z;
-            // var zmin = e.features[0].properties.min_z;
-            // var gain = (zmax-zmin).toFixed(0);
+        // map.on('click', 'runs', function (e) {
+        //     var coordinates = e.features[0].geometry.coordinates.slice();
+        //     var description = e.features[0].properties.desc;
+        //     var distance = e.features[0].properties.distance.toFixed(2);
+        //     // var zmax = e.features[0].properties.max_z;
+        //     // var zmin = e.features[0].properties.min_z;
+        //     // var gain = (zmax-zmin).toFixed(0);
 
-            // Ensure that if the map is zoomed out such that multiple
-            // copies of the feature are visible, the popup appears
-            // over the copy being pointed to.
-            while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-                coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-            }
-            map.flyTo({
-            // These options control the ending camera position: centered at
-            // the target, at zoom level 9, and north up.
-                center: e.lngLat,
-                zoom: 12,
-                bearing: 0,
+        //     // Ensure that if the map is zoomed out such that multiple
+        //     // copies of the feature are visible, the popup appears
+        //     // over the copy being pointed to.
+        //     while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+        //         coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+        //     }
+        //     map.flyTo({
+        //     // These options control the ending camera position: centered at
+        //     // the target, at zoom level 9, and north up.
+        //         center: e.lngLat,
+        //         zoom: 12,
+        //         bearing: 0,
      
-                // These options control the flight curve, making it move
-            // slowly and zoom out almost completely before starting
-            // to pan.
-            speed: 1.5, // make the flying slow
-            curve: 1, // change the speed at which it zooms out
+        //         // These options control the flight curve, making it move
+        //     // slowly and zoom out almost completely before starting
+        //     // to pan.
+        //     speed: 1.5, // make the flying slow
+        //     curve: 1, // change the speed at which it zooms out
             
-            // This can be any easing function: it takes a number between
-            // 0 and 1 and returns another number between 0 and 1.
-            easing: function (t) { return t; }
-            });
-                // if (description == 'Mt Furano'){
-                new mapboxgl.Popup()
-                    .setLngLat(e.lngLat)
-                    .setHTML(`<h1> ${description} </h1><p> ${distance} </p>`)
-                    .addTo(map);  
+        //     // This can be any easing function: it takes a number between
+        //     // 0 and 1 and returns another number between 0 and 1.
+        //     easing: function (t) { return t; }
+        //     });
+        //         // if (description == 'Mt Furano'){
+        //         new mapboxgl.Popup()
+        //             .setLngLat(e.lngLat)
+        //             .setHTML(`<h1> ${description} </h1><p> ${distance} </p>`)
+        //             .addTo(map);  
                
         
-        });
+        // });
     
 
     

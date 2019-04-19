@@ -104,103 +104,103 @@
             map.getCanvas().style.cursor = '';
         });
     
-        map.on('render', afterChangeComplete);
-        function FlyOut(Homecoords){
-            map.flyTo({
-                center: Homecoords,
-                zoom: 7,
-                speed: 1.5,
-                curve: 3,
-                easing(t) {
-                return t;
-                        }
-                }); 
-            };
-        function afterChangeComplete () {
-            if (!map.loaded()) { return } // still not loaded; bail out.
+        // map.on('render', afterChangeComplete);
+        // function FlyOut(Homecoords){
+        //     map.flyTo({
+        //         center: Homecoords,
+        //         zoom: 7,
+        //         speed: 1.5,
+        //         curve: 3,
+        //         easing(t) {
+        //         return t;
+        //                 }
+        //         }); 
+        //     };
+        // function afterChangeComplete () {
+        //     if (!map.loaded()) { return } // still not loaded; bail out.
 
-            // now that the map is loaded, it's safe to query the features:
+        //     // now that the map is loaded, it's safe to query the features:
             
-            // var home = document.createElement('a');
-            // home.href = '#'
-            // home.className = 'active'
-            // home.textContent = 'Zoom Out'
-            // home.id = 'Home'
-            // var homeLink = document.getElementById('menu');
-            // homeLink.appendChild(home);
+        //     // var home = document.createElement('a');
+        //     // home.href = '#'
+        //     // home.className = 'active'
+        //     // home.textContent = 'Zoom Out'
+        //     // home.id = 'Home'
+        //     // var homeLink = document.getElementById('menu');
+        //     // homeLink.appendChild(home);
             
             
-            var features = map.queryRenderedFeatures({layers: ['runs']});
+        //     var features = map.queryRenderedFeatures({layers: ['runs']});
 
             
-            for (var i = 0; i < features.length; i++){
-                    var id = features[i].properties.desc
-                    var coords = features[i].geometry.coordinates
+        //     for (var i = 0; i < features.length; i++){
+        //             var id = features[i].properties.desc
+        //             var coords = features[i].geometry.coordinates
                     
                     
-                    // var property = feature.properties;
-                    var link = document.createElement('a');
-                    link.href = '#';
-                    link.className = 'active';
-                    link.id = id;
-                    link.textContent = id;
-                    var layers = document.getElementById('menu');
-                    layers.appendChild(link);
+        //             // var property = feature.properties;
+        //             var link = document.createElement('a');
+        //             link.href = '#';
+        //             link.className = 'active';
+        //             link.id = id;
+        //             link.textContent = id;
+        //             var layers = document.getElementById('menu');
+        //             layers.appendChild(link);
             
             
-                    // document.getElementById(id).addEventListener('click', function(e) {
-                    link.onclick = function(e) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        var lineFeatures = map.querySourceFeatures('runs');
-                        var clickedFeature = this.id;
-                        for (var i = 0; i < lineFeatures.length; i++){
-                            if (clickedFeature === lineFeatures[i].properties.name){
-                                var coordinates = lineFeatures[i].geometry.coordinates;
-                                // FlyTo(coordinates.lngLat);
-                                // Pass the first coordinates in the LineString to `lngLatBounds` &
-                                // wrap each coordinate pair in `extend` to include them in the bounds
-                                // result. A variation of this technique could be applied to zooming
-                                // to the bounds of multiple Points or Polygon geomteries - it just
-                                // requires wrapping all the coordinates with the extend method.
-                                var bounds = coordinates.reduce(function(bounds, coord) {
-                                    return bounds.extend(coord);
-                                }, new mapboxgl.LngLatBounds(coordinates[0], coordinates[0]));
+        //             // document.getElementById(id).addEventListener('click', function(e) {
+        //             link.onclick = function(e) {
+        //                 e.preventDefault();
+        //                 e.stopPropagation();
+        //                 var lineFeatures = map.querySourceFeatures('runs');
+        //                 var clickedFeature = this.id;
+        //                 for (var i = 0; i < lineFeatures.length; i++){
+        //                     if (clickedFeature === lineFeatures[i].properties.name){
+        //                         var coordinates = lineFeatures[i].geometry.coordinates;
+        //                         // FlyTo(coordinates.lngLat);
+        //                         // Pass the first coordinates in the LineString to `lngLatBounds` &
+        //                         // wrap each coordinate pair in `extend` to include them in the bounds
+        //                         // result. A variation of this technique could be applied to zooming
+        //                         // to the bounds of multiple Points or Polygon geomteries - it just
+        //                         // requires wrapping all the coordinates with the extend method.
+        //                         var bounds = coordinates.reduce(function(bounds, coord) {
+        //                             return bounds.extend(coord);
+        //                         }, new mapboxgl.LngLatBounds(coordinates[0], coordinates[0]));
                             
-                                map.fitBounds(bounds, {
-                                padding: 20
-                                });
+        //                         map.fitBounds(bounds, {
+        //                         padding: 20
+        //                         });
 
-                            } else{
-                                var home = document.createElement('a');
-                                home.href = '#'
-                                home.className = 'active'
-                                home.textContent = 'Zoom Out'
-                                home.id = 'Home'
-                                var homeLink = document.getElementById('menu');
-                                homeLink.appendChild(home);
-                                homeLink.onclick = function(e){
-                                e.preventDefault()
-                                e.stopPropagation()
-                                var Homecoords = [-105.2705, 40.0150];
-                                FlyOut(Homecoords);                
-                                };
+        //                     } else{
+        //                         var home = document.createElement('a');
+        //                         home.href = '#'
+        //                         home.className = 'active'
+        //                         home.textContent = 'Zoom Out'
+        //                         home.id = 'Home'
+        //                         var homeLink = document.getElementById('menu');
+        //                         homeLink.appendChild(home);
+        //                         homeLink.onclick = function(e){
+        //                         e.preventDefault()
+        //                         e.stopPropagation()
+        //                         var Homecoords = [-105.2705, 40.0150];
+        //                         FlyOut(Homecoords);                
+        //                         };
 
-                            }
-                        }
+        //                     }
+        //                 }
                         
                         
 
-                            // }
+        //                     // }
 
-                        // }                       
-                    };
+        //                 // }                       
+        //             };
                 
 
-                map.off('render', afterChangeComplete); // remove this handler now that we're done.
-                };
+        //         map.off('render', afterChangeComplete); // remove this handler now that we're done.
+        //         };
                 
-        };
+        // };
             
     });       
             

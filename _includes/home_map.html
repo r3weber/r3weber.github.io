@@ -20,7 +20,7 @@
     var map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/r3weber1/cjsp27atf0lfd1fqntu4h01gz',
-        center: [105.2705, 40.0150],
+        center: [-105.2705, 40.0150],
         zoom: 7,
         attributionControl: false
     });
@@ -182,7 +182,7 @@
                                 homeLink.onclick = function(e){
                                 e.preventDefault()
                                 e.stopPropagation()
-                                var Homecoords = [105.2705, 40.0150];
+                                var Homecoords = [-105.2705, 40.0150];
                                 FlyOut(Homecoords);                
                                 };
 

@@ -25,8 +25,9 @@
         zoom: 4,
         attributionControl: false
     });
-   var geoJson = map.addSource('runs', {type: 'geojson', data: url});
+   
    map.on('load', function () {
+    var geoJson = map.addSource('runs', {type: 'geojson', data: url});
     geoJson.features.forEach(function(marker) {
         
         // create a HTML element for each feature

@@ -27,8 +27,9 @@
     });
    
    map.on('load', function () {
-    var geojson = map.addSource('runs', {type: 'geojson', data: url});
-    console.log(geoJson);
+    // var geojson = map.addSource('runs', {type: 'geojson', data: url});
+    var geojson = map.getSource('runs').setData({url});
+
     geojson.features.forEach(function(marker) {
         
         // create a HTML element for each feature

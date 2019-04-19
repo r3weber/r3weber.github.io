@@ -1,0 +1,10 @@
+{
+"type": "FeatureCollection",
+"name": "run_locations",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "id": 1, "Location": "Mt Baldy" }, "geometry": { "type": "Point", "coordinates": [ -105.998618771151456, 39.467659816058379 ] } },
+{ "type": "Feature", "properties": { "id": 2, "Location": "Walker Ranch" }, "geometry": { "type": "Point", "coordinates": [ -105.329125831384829, 39.940919189289723 ] } },
+{ "type": "Feature", "properties": { "id": 3, "Location": "NCAR" }, "geometry": { "type": "Point", "coordinates": [ -105.277225213383346, 39.980971113149387 ] } }
+]
+}

@@ -3,8 +3,13 @@
 "name": "run_locations",
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "features": [
+{ "type": "Feature", "properties": { "id": 4, "Location": "Knoxville" }, "geometry": { "type": "Point", "coordinates": [ -83.929049147134023, 35.954876629418621 ] } },
 { "type": "Feature", "properties": { "id": 1, "Location": "Mt Baldy" }, "geometry": { "type": "Point", "coordinates": [ -105.998618771151456, 39.467659816058379 ] } },
 { "type": "Feature", "properties": { "id": 2, "Location": "Walker Ranch" }, "geometry": { "type": "Point", "coordinates": [ -105.329125831384829, 39.940919189289723 ] } },
-{ "type": "Feature", "properties": { "id": 3, "Location": "NCAR" }, "geometry": { "type": "Point", "coordinates": [ -105.277225213383346, 39.980971113149387 ] } }
+{ "type": "Feature", "properties": { "id": 3, "Location": "NCAR" }, "geometry": { "type": "Point", "coordinates": [ -105.277225213383346, 39.980971113149387 ] } },
+{ "type": "Feature", "properties": { "id": 5, "Location": "Central Park" }, "geometry": { "type": "Point", "coordinates": [ -73.969178702086069, 40.782134752604627 ] } },
+{ "type": "Feature", "properties": { "id": 6, "Location": "Madison" }, "geometry": { "type": "Point", "coordinates": [ -89.359130445161966, 43.085120374535329 ] } },
+{ "type": "Feature", "properties": { "id": 7, "Location": "Monument Valley" }, "geometry": { "type": "Point", "coordinates": [ -110.094678959374406, 36.990552627223103 ] } },
+{ "type": "Feature", "properties": { "id": 8, "Location": "San Francisco" }, "geometry": { "type": "Point", "coordinates": [ -122.396794255886292, 37.797265126963161 ] } }
 ]
 }

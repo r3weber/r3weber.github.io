@@ -28,7 +28,7 @@
    
    map.on('load', function () {
     map.addSource('runs', {type: 'geojson', data: run_tracks});
-    map.addSource('markers', {type: 'geojson', data: run_points});
+    var points = map.addSource('markers', {type: 'geojson', data: run_points});
     // map.getSource('runs').setData({geojson});
     map.addLayer({
             "id": "runs",
@@ -69,7 +69,7 @@
             });
 
     
-    Array.from(run_points.features).forEach(function(marker) {
+    Array.from(points.features).forEach(function(marker) {
         
         // create a HTML element for each feature
         var el = document.createElement('div');

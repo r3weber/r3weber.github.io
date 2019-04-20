@@ -39,41 +39,25 @@
                 'line-width': 6,
                 },            
         });
-    map.loadImage('./assets/images/unnamed.jpg', function(error, image) {
-        if (error) throw error;
-        map.addImage('shoe', image);
-        map.addLayer({
-            "id": "markers",
-            "interactive": true,
-            "type": "symbol",
-            "source": "markers",
-            "layout": {
-                "icon-image": 'shoe',
-                "icon-size": .25,
+//     map.loadImage('./assets/images/unnamed.jpg', function(error, image) {
+//         if (error) throw error;
+//         map.addImage('shoe', image);
+//         map.addLayer({
+//             "id": "markers",
+//             "interactive": true,
+//             "type": "symbol",
+//             "source": "markers",
+//             "layout": {
+//                 "icon-image": 'shoe',
+//                 "icon-size": .25,
                  
-            },
-            "paint": {
-                /*"text-size": 10,*/
-            }
-        });
-   });
-   map.on('click', function (e) {
-    // // Use featuresAt to get features within a given radius of the click event
-    // // Use layer option to avoid getting results from other layers
-    // map.featuresAt(e.point, {layer: 'markers', radius: 10, includeGeometry: true}, function (err, features) {
-    //     if (err) throw err;
-        // if there are features within the given radius of the click event,
-        // fly to the location of the click event
-        if (e.features.length) {
-            // Get coordinates from the symbol and center the map on those coordinates
-            map.flyTo({center: e.features[0].geometry.coordinates});
-            var featureName = e.features[0].properties.Location;
-            var tooltip = new mapboxgl.Popup()
-                .setLngLat(e.lngLat)
-                .setHTML('<p>' + featureName + '</p>')
-                .addTo(map);
-        }
-    });
+//             },
+//             "paint": {
+//                 /*"text-size": 10,*/
+//             }
+//         });
+//    });
+  
 
     map.on('mouseenter', 'markers', function () {
                 map.getCanvas().style.cursor = 'pointer';
@@ -85,19 +69,19 @@
             });
 
     
-    // run_points.features.forEach(function(marker) {
+    run_points.forEach(function(marker) {
         
-    //     // create a HTML element for each feature
-    //     var el = document.createElement('div');
-    //     el.className = 'marker';
+        // create a HTML element for each feature
+        var el = document.createElement('div');
+        el.className = 'marker';
 
-    //     // make a marker for each feature and add to the map
-    //     new mapboxgl.Marker(el)
-    //     .setLngLat(marker.geometry.coordinates)
-    //     setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
-    //         .setHTML('<h3>' + marker.properties.desc + '</h3><p>' + marker.properties.distance + '</p>'))
-    //     .addTo(map);
-    //         });
+        // make a marker for each feature and add to the map
+        new mapboxgl.Marker(el)
+        .setLngLat(marker.geometry.coordinates)
+        setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
+            .setHTML('<h3>' + marker.properties.Location + '</h3>'))
+        .addTo(map);
+            });
     map.addControl(new mapboxgl.AttributionControl({
         compact: true    
     }));

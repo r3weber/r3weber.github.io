@@ -69,7 +69,7 @@
             });
 
     
-    run_points.forEach(function(marker) {
+    Array.from(run_points.features).forEach(function(marker) {
         
         // create a HTML element for each feature
         var el = document.createElement('div');

@@ -17,7 +17,7 @@
     <script>
     mapboxgl.accessToken = 'pk.eyJ1IjoicjN3ZWJlcjEiLCJhIjoiY2lyM3lhc3FnMDFrZ2Zwbm04cncwa2JkMiJ9.AeYZqyDiobmuxAVfIKE8gA';
     var run_tracks = 'https://r3weber.github.io/assets/geoJson/runs.geojson';
-    var run_points = 'https://r3weber.github.io/assets/geoJson/run_locations.geojson';
+    
     var map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/r3weber1/cjsp27atf0lfd1fqntu4h01gz',
@@ -28,7 +28,7 @@
    
    map.on('load', function () {
     map.addSource('runs', {type: 'geojson', data: run_tracks});
-    var points = map.addSource('markers', {type: 'geojson', data: run_points});
+    map.addSource('markers', {type: 'geojson', data: run_points});
     // map.getSource('runs').setData({geojson});
     map.addLayer({
             "id": "runs",
@@ -68,8 +68,8 @@
                 map.getCanvas().style.cursor = '';
             });
 
-    
-    Array.from(points.features).forEach(function(marker) {
+    var run_points = 'https://r3weber.github.io/assets/geoJson/run_locations.geojson';
+    Array.from(run_points.features).forEach(function(marker) {
         
         // create a HTML element for each feature
         var el = document.createElement('div');

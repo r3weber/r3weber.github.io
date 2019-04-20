@@ -17,7 +17,7 @@
     <script>
     mapboxgl.accessToken = 'pk.eyJ1IjoicjN3ZWJlcjEiLCJhIjoiY2lyM3lhc3FnMDFrZ2Zwbm04cncwa2JkMiJ9.AeYZqyDiobmuxAVfIKE8gA';
     var run_tracks = 'https://r3weber.github.io/assets/geoJson/runs.geojson';
-    
+    var run_points = 'https://r3weber.github.io/assets/geoJson/run_locations.geojson';
     var map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/r3weber1/cjsp27atf0lfd1fqntu4h01gz',
@@ -39,26 +39,41 @@
                 'line-width': 6,
                 },            
         });
-//     map.loadImage('./assets/images/unnamed.jpg', function(error, image) {
-//         if (error) throw error;
-//         map.addImage('shoe', image);
-//         map.addLayer({
-//             "id": "markers",
-//             "interactive": true,
-//             "type": "symbol",
-//             "source": "markers",
-//             "layout": {
-//                 "icon-image": 'shoe',
-//                 "icon-size": .25,
+    map.loadImage('./assets/images/unnamed.jpg', function(error, image) {
+        if (error) throw error;
+        map.addImage('shoe', image);
+        map.addLayer({
+            "id": "markers",
+            "interactive": true,
+            "type": "symbol",
+            "source": "markers",
+            "layout": {
+                "icon-image": 'shoe',
+                "icon-size": .25,
                  
-//             },
-//             "paint": {
-//                 /*"text-size": 10,*/
-//             }
-//         });
-//    });
+            },
+            "paint": {
+                /*"text-size": 10,*/
+            }
+        });
+   });
   
-
+    map.on('click', 'markers', function (e) {
+        var coordinates = e.features[0].geometry.coordinates.slice();
+        var description = e.features[0].properties.description;
+        
+        // Ensure that if the map is zoomed out such that multiple
+        // copies of the feature are visible, the popup appears
+        // over the copy being pointed to.
+        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+        coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+        }
+        
+        new mapboxgl.Popup()
+        .setLngLat(coordinates)
+        .setHTML(description)
+        .addTo(map);
+        });
     map.on('mouseenter', 'markers', function () {
                 map.getCanvas().style.cursor = 'pointer';
             });
@@ -68,20 +83,20 @@
                 map.getCanvas().style.cursor = '';
             });
 
-    var run_points = 'https://r3weber.github.io/assets/geoJson/run_locations.geojson';
-    Array.from(run_points.features).forEach(function(marker) {
+    
+    // Array.from(run_points.features).forEach(function(marker) {
         
-        // create a HTML element for each feature
-        var el = document.createElement('div');
-        el.className = 'marker';
+    //     // create a HTML element for each feature
+    //     var el = document.createElement('div');
+    //     el.className = 'marker';
 
-        // make a marker for each feature and add to the map
-        new mapboxgl.Marker(el)
-        .setLngLat(marker.geometry.coordinates)
-        setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
-            .setHTML('<h3>' + marker.properties.Location + '</h3>'))
-        .addTo(map);
-            });
+    //     // make a marker for each feature and add to the map
+    //     new mapboxgl.Marker(el)
+    //     .setLngLat(marker.geometry.coordinates)
+    //     setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
+    //         .setHTML('<h3>' + marker.properties.Location + '</h3>'))
+    //     .addTo(map);
+    //         });
     map.addControl(new mapboxgl.AttributionControl({
         compact: true    
     }));

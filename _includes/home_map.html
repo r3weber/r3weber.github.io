@@ -99,7 +99,7 @@
                 map.getCanvas().style.cursor = '';
             });
 
-    $.getJSON(run_tracks, function (geojson) {
+    $.getJSON(run_points, function (geojson) {
         geojson.features.forEach(function(marker) {
             
             // create a HTML element for each feature
@@ -108,11 +108,11 @@
 
             // make a marker for each feature and add to the map
             new mapboxgl.Marker(el)
-            var description = marker.properties.desc
+            var description = marker.properties.Location
             var distance = marker.properties.distance
             .setLngLat(marker.geometry.coordinates)
             .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
-                .setHTML(`<h1>${description}</h1><p>${distance} Miles</p>`))
+                .setHTML(`<h1>${description}</h1>`))
             .addTo(map);
                 });
     });

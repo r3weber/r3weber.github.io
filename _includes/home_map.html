@@ -111,11 +111,18 @@
             
             
             .setLngLat(marker.geometry.coordinates)
-            .setZoom(12)
             .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
                 .setHTML(`<h1>${marker.properties.Location}</h1>`))
             .addTo(map);
                 });
+            document.getelementsByClassName('marker').onclick(function(e){
+               map.flyTo({
+                    center: marker.geometry.coordinates}); 
+            });
+                
+            
+
+        });
     });
     map.addControl(new mapboxgl.AttributionControl({
         compact: true    
@@ -125,7 +132,7 @@
     map.addControl(new mapboxgl.FullscreenControl());
      // Add a layer showing the places.      
        
-});       
+       
     
     </script>
     

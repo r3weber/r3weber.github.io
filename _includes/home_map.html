@@ -112,7 +112,7 @@
             
             .setLngLat(marker.geometry.coordinates)
             .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
-                .setHTML(`<h1>marker.properties.Location</h1>`))
+                .setHTML(`<h1>${marker.properties.Location}</h1>`))
             .addTo(map);
                 });
     });

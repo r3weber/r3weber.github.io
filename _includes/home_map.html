@@ -115,8 +115,9 @@
                 .setHTML(`<h1>${marker.properties.Location}</h1>`))
             .addTo(map);
                 });
-            document.getelementsByClassName('marker').onclick(function(e){
+            document.getelementByClassName('marker').addEventListener('click', function (){
                map.flyTo({
+                    zoom: 10,
                     center: marker.geometry.coordinates}); 
             });
                 

@@ -115,11 +115,12 @@
             .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
                 .setHTML(`<h1>${marker.properties.Location}</h1>`))
             .addTo(map);
-                });
-        document.getElementById('marker').addEventListener('click', function (){
+            document.getElementById('marker').addEventListener('click', function (){
                map.flyTo({
                     zoom: 10,
-                    center: marker.geometry.coordinates}); 
+                    center: marker.geometry.coordinates});
+                });
+             
             });
                 
             

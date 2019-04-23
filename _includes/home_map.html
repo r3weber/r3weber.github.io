@@ -39,57 +39,57 @@
                 'line-width': 6,
                 },            
         });
-    map.loadImage('./assets/images/unnamed.jpg', function(error, image) {
-        if (error) throw error;
-        map.addImage('shoe', image);
-        map.addLayer({
-            "id": "markers",
-            "interactive": true,
-            "type": "symbol",
-            "source": "markers",
-            "layout": {
-                "icon-image": 'shoe',
-                "icon-size": .25,
+//     map.loadImage('./assets/images/unnamed.jpg', function(error, image) {
+//         if (error) throw error;
+//         map.addImage('shoe', image);
+//         map.addLayer({
+//             "id": "markers",
+//             "interactive": true,
+//             "type": "symbol",
+//             "source": "markers",
+//             "layout": {
+//                 "icon-image": 'shoe',
+//                 "icon-size": .25,
                  
-            },
-            "paint": {
-                /*"text-size": 10,*/
-            }
-        });
-   });
+//             },
+//             "paint": {
+//                 /*"text-size": 10,*/
+//             }
+//         });
+//    });
   
-    map.on('click', 'markers', function (e) {
-        var coordinates = e.features[0].geometry.coordinates.slice();
-        var description = e.features[0].properties.Location;
+//     map.on('click', 'markers', function (e) {
+//         var coordinates = e.features[0].geometry.coordinates.slice();
+//         var description = e.features[0].properties.Location;
         
-        // Ensure that if the map is zoomed out such that multiple
-        // copies of the feature are visible, the popup appears
-        // over the copy being pointed to.
-        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-        coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-        }
-            map.flyTo({
-            // These options control the ending camera position: centered at
-            // the target, at zoom level 9, and north up.
-                center: e.features[0].geometry.coordinates,
-                zoom: 10,
-                bearing: 0,
+//         // Ensure that if the map is zoomed out such that multiple
+//         // copies of the feature are visible, the popup appears
+//         // over the copy being pointed to.
+//         while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+//         coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+//         }
+//             map.flyTo({
+//             // These options control the ending camera position: centered at
+//             // the target, at zoom level 9, and north up.
+//                 center: e.features[0].geometry.coordinates,
+//                 zoom: 10,
+//                 bearing: 0,
      
-                // These options control the flight curve, making it move
-            // slowly and zoom out almost completely before starting
-            // to pan.
-            speed: 1.5, // make the flying slow
-            curve: 1, // change the speed at which it zooms out
+//                 // These options control the flight curve, making it move
+//             // slowly and zoom out almost completely before starting
+//             // to pan.
+//             speed: 1.5, // make the flying slow
+//             curve: 1, // change the speed at which it zooms out
             
-            // This can be any easing function: it takes a number between
-            // 0 and 1 and returns another number between 0 and 1.
-            easing: function (t) { return t; }
-            });
-        new mapboxgl.Popup()
-        .setLngLat(coordinates)
-        .setHTML(description)
-        .addTo(map);
-        });
+//             // This can be any easing function: it takes a number between
+//             // 0 and 1 and returns another number between 0 and 1.
+//             easing: function (t) { return t; }
+//             });
+//         new mapboxgl.Popup()
+//         .setLngLat(coordinates)
+//         .setHTML(description)
+//         .addTo(map);
+//         });
     map.on('mouseenter', 'markers', function () {
                 map.getCanvas().style.cursor = 'pointer';
             });
@@ -99,21 +99,21 @@
                 map.getCanvas().style.cursor = '';
             });
 
-    // $.getJSON(run_points, function (geojson) {
-    //     geojson.features.forEach(function(marker) {
+    $.getJSON(run_points, function (geojson) {
+        geojson.features.forEach(function(marker) {
             
-    //         // create a HTML element for each feature
-    //         var el = document.createElement('div');
-    //         el.className = 'marker';
+            // create a HTML element for each feature
+            var el = document.createElement('div');
+            el.className = 'marker';
 
-    //         // make a marker for each feature and add to the map
-    //         new mapboxgl.Marker(el)
-    //         .setLngLat(marker.geometry.coordinates)
-    //         setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
-    //             .setHTML('<h3>' + marker.properties.Location + '</h3>'))
-    //         .addTo(map);
-    //             });
-    // });
+            // make a marker for each feature and add to the map
+            new mapboxgl.Marker(el)
+            .setLngLat(marker.geometry.coordinates)
+            setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
+                .setHTML('<h3>' + marker.properties.Location + '</h3>'))
+            .addTo(map);
+                });
+    });
     map.addControl(new mapboxgl.AttributionControl({
         compact: true    
     }));

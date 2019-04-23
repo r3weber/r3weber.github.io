@@ -105,6 +105,7 @@
             // create a HTML element for each feature
             var el = document.createElement('div');
             el.className = 'marker';
+            el.id = 'marker';
 
             // make a marker for each feature and add to the map
             new mapboxgl.Marker(el)
@@ -115,7 +116,7 @@
                 .setHTML(`<h1>${marker.properties.Location}</h1>`))
             .addTo(map);
                 });
-            document.getelementsByClassName('marker').addEventListener('click', function (){
+            document.getelementById('marker').addEventListener('click', function (){
                map.flyTo({
                     zoom: 10,
                     center: marker.geometry.coordinates}); 

@@ -71,7 +71,7 @@
             map.flyTo({
             // These options control the ending camera position: centered at
             // the target, at zoom level 9, and north up.
-                center: e.features[0].lngLat,
+                center: e.features[0].geometry.coordinates,
                 zoom: 10,
                 bearing: 0,
      

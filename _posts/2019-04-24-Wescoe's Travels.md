@@ -7,4 +7,4 @@ permalink: /wescoe/
 ---
 ## **MAX'S STATES** 
 
-{$ include wescoesMap.html $}
+{% include wescoesMap.html %}

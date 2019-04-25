@@ -1,0 +1,18 @@
+{
+"type": "FeatureCollection",
+"name": "wescoeStates",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "id": 1, "desc": null }, "geometry": { "type": "Point", "coordinates": [ -86.3607234282866, 32.3934111954453 ] } },
+{ "type": "Feature", "properties": { "id": 2, "desc": null }, "geometry": { "type": "Point", "coordinates": [ -81.0250346583569, 34.0062653599162 ] } },
+{ "type": "Feature", "properties": { "id": 3, "desc": null }, "geometry": { "type": "Point", "coordinates": [ -81.6269454949177, 38.3784857276389 ] } },
+{ "type": "Feature", "properties": { "id": 4, "desc": null }, "geometry": { "type": "Point", "coordinates": [ -82.9812448771795, 39.9918331821349 ] } },
+{ "type": "Feature", "properties": { "id": 5, "desc": null }, "geometry": { "type": "Point", "coordinates": [ -80.0093101216605, 40.4800412588504 ] } },
+{ "type": "Feature", "properties": { "id": 6, "desc": null }, "geometry": { "type": "Point", "coordinates": [ -75.5106536088232, 38.9841738310626 ] } },
+{ "type": "Feature", "properties": { "id": 7, "desc": null }, "geometry": { "type": "Point", "coordinates": [ -74.3930431232298, 40.119009929184 ] } },
+{ "type": "Feature", "properties": { "id": 8, "desc": null }, "geometry": { "type": "Point", "coordinates": [ -71.5041846029652, 41.6669742495372 ] } },
+{ "type": "Feature", "properties": { "id": 9, "desc": null }, "geometry": { "type": "Point", "coordinates": [ -72.5794732328629, 44.2576300655859 ] } },
+{ "type": "Feature", "properties": { "id": 10, "desc": null }, "geometry": { "type": "Point", "coordinates": [ -71.5135894597864, 43.2088422735542 ] } },
+{ "type": "Feature", "properties": { "id": 11, "desc": null }, "geometry": { "type": "Point", "coordinates": [ -69.7870144950162, 44.3109313104262 ] } }
+]
+}

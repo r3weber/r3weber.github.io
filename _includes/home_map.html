@@ -29,7 +29,7 @@
     var map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/r3weber1/cjsp27atf0lfd1fqntu4h01gz',
-        center: [-105.2705, 40.0150],
+        center: [-104.2705, 40.0150],
         zoom: 3,
         attributionControl: false
     });
@@ -123,10 +123,11 @@
             .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
                 .setHTML(`<h1>${marker.properties.Location}</h1>`))
             .addTo(map);
-            document.getElementById('marker').addEventListener('click', function (){
+           
+            document.getElementById('marker').addEventListener('click', function (e){
                map.flyTo({
                     zoom: 10,
-                    center: marker.geometry.coordinates});
+                    center: e.marker.geometry.coordinates});
                 });
              
             });

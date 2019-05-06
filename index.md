@@ -4,6 +4,6 @@
 
 layout: home
 ---
-
-click two different locations on the map to get directions
+**Get Directions to Bars and Restaraunts**
+click two different locations on the map or search
 {%include denver_spotsMap.html%}

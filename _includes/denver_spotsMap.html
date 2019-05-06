@@ -1,5 +1,6 @@
 <body>
-
+    <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.0.0/mapbox-gl-directions.js'></script>
+    <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.0.0/mapbox-gl-directions.css' type='text/css' />
     <style>
         .marker {
         background-image: url('/assets/images/unnamed.jpg');
@@ -33,15 +34,15 @@
         zoom: 3,
         attributionControl: false
     });
-   
-   map.on('load', function () {
-    var directions = new MapboxDirections({
+   var directions = new MapboxDirections({
         accessToken: mapboxgl.accessToken,
         steps: false,
         geometries: 'polyline',
         controls: {instructions:false}
     });
-    map.addControl(directions, 'bottom-left');
+    map.addControl(directions, 'top-left');
+   map.on('load', function () {
+    
 
  
     map.addControl(new mapboxgl.AttributionControl({

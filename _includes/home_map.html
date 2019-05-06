@@ -124,10 +124,10 @@
                 .setHTML(`<h1>${marker.properties.Location}</h1>`))
             .addTo(map);
            
-            document.getElementById('marker').addEventListener('click', function (e){
+            el.addEventListener('click', function (){
                map.flyTo({
                     zoom: 10,
-                    center: e.marker.geometry.coordinates});
+                    center: marker.geometry.coordinates});
                 });
              
             });

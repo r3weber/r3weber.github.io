@@ -36,9 +36,10 @@
     });
    var directions = new MapboxDirections({
         accessToken: mapboxgl.accessToken,
-        steps: false,
+        // steps: false,
         geometries: 'polyline',
-        controls: {instructions:false}
+        profile: 'mapbox/walking'
+        // controls: {instructions:false}
     });
     map.addControl(directions, 'top-left');
    map.on('load', function () {

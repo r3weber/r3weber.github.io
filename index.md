@@ -4,4 +4,4 @@
 
 layout: home
 ---
-{%include home_map.html%}
+{%include denver_spotsMap.html%}

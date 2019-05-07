@@ -43,6 +43,7 @@
     </style>
     
     <div id='map'>
+        <pre id='info'></pre>
        <div id='state-legend' class='legend'>
             <div><span style='background-color:red'></span>Homeless Camp Area</div>
             
@@ -92,11 +93,9 @@
      // Add a layer showing the places.      
      map.on('mousemove', function (e) {
         document.getElementById('info').innerHTML =
-        // // e.point is the x, y coordinates of the mousemove event relative
-        // // to the top-left corner of the map
-        // JSON.stringify(e.point) + '<br />' +
-        // e.lngLat is the longitude, latitude geographical position of the event
-        JSON.stringify(e.lngLat);
+        JSON.stringify(e.lngLat, function(key, val){
+            return val.toFixed ? Number(val.toFixed(3)) : val;
+        });
         });
      
    });

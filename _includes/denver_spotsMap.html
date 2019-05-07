@@ -25,12 +25,27 @@
         margin-right: 5px;
         width: 10px;
         }
+
+        #info {
+        display: block;
+        position: relative;
+        margin: 0px auto;
+        width: 50%;
+        padding: 10px;
+        border: white;
+        border-radius: 80px;
+        font-size: 12px;
+        text-align: center;
+        color: rgb(255, 254, 254);
+        background: rgb(15, 15, 15);
+        }
        
     </style>
     
     <div id='map'>
        <div id='state-legend' class='legend'>
             <div><span style='background-color:red'></span>Homeless Camp Area</div>
+            
         </div>
     </div>
     
@@ -75,7 +90,14 @@
     map.addControl(nav, 'top-left');
     map.addControl(new mapboxgl.FullscreenControl());
      // Add a layer showing the places.      
-
+     map.on('mousemove', function (e) {
+        document.getElementById('info').innerHTML =
+        // // e.point is the x, y coordinates of the mousemove event relative
+        // // to the top-left corner of the map
+        // JSON.stringify(e.point) + '<br />' +
+        // e.lngLat is the longitude, latitude geographical position of the event
+        JSON.stringify(e.lngLat.toFixed(3));
+        });
      
    });
     

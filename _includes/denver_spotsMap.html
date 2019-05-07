@@ -36,8 +36,6 @@
     
     <script>
     mapboxgl.accessToken = 'pk.eyJ1IjoicjN3ZWJlcjEiLCJhIjoiY2lyM3lhc3FnMDFrZ2Zwbm04cncwa2JkMiJ9.AeYZqyDiobmuxAVfIKE8gA';
-    var run_tracks = 'https://r3weber.github.io/assets/geoJson/runs.geojson';
-    var run_points = 'https://r3weber.github.io/assets/geoJson/run_locations.geojson';
     var map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/r3weber1/cjvcsqbtv6yt01fqxdd96ab5u',
@@ -64,6 +62,8 @@
             "source": "avoids",
             paint: {
                 'fill-color': 'rebeccapurple',
+                'fill-opacity': '0.5'
+                'fill-outline-color': 'black'
                 },            
         });
 

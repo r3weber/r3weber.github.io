@@ -53,6 +53,7 @@
         // controls: {instructions:false}
     });
     map.addControl(directions, 'top-left');
+    directions.setOrigin('2193 Arapahoe St, Denver CO 80205');
     avoid_areas = 'https://r3weber.github.io/assets/geoJson/avoid_areas.geojson'
    map.on('load', function () {
     map.addSource('avoids', {type: 'geojson', data: avoid_areas});

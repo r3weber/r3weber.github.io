@@ -97,7 +97,7 @@
             return val.toFixed ? Number(val.toFixed(4)) : val;
             });
         function replacer(key, value) {
-            return value.replace(/[^{}"]/gi, '');
+            return value.replace(/[^\w\s]/gi, ' ');
         }
         document.getElementById('info').innerHTML =
             JSON.stringify(latLong, replacer);

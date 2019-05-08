@@ -91,18 +91,27 @@
     map.addControl(nav, 'top-left');
     map.addControl(new mapboxgl.FullscreenControl());
      // Add a layer showing the places.      
-     map.on('mousemove', function (e) {
-        var latLong = JSON.stringify(e.lngLat, function(key, val){
+    //  map.on('mousemove', function (e) {
+    //     var latLong = JSON.stringify(e.lngLat, function(key, val){
         
-            return val.toFixed ? Number(val.toFixed(4)) : val;
-            });
-        function replacer(key, value) {
-            return value.replace(/[^\w\s]/gi, ' ');
-        }
-        document.getElementById('info').innerHTML =
-            JSON.stringify(latLong, replacer);
-        });
-     
+    //         return val.toFixed ? Number(val.toFixed(4)) : val;
+    //         });
+    //     function replacer(key, value) {
+    //         return value.replace(/[^\w\s]/gi, ' ');
+    //     }
+    //     document.getElementById('info').innerHTML =
+    //         JSON.stringify(latLong, replacer);
+    //     });
+    map.on('move', () => {
+      const { lng, lat } = map.getCenter();
+
+      this.setState({
+        lng: lng.toFixed(2),
+        lat: lat.toFixed(2),
+        zoom: map.getZoom().toFixed(2)
+      });
+      document.getElementById('info').innerHTML = `Longitude: ${lng} Latitude: ${lat} Zoom: ${zoom}`
+    });
    });
     
     </script>

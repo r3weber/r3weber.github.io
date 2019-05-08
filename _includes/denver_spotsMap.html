@@ -94,7 +94,9 @@
      map.on('mousemove', function (e) {
         document.getElementById('info').innerHTML =
         JSON.stringify(e.lngLat, function(key, val){
-            val.replace(/[^\w\s]/gi, '');
+            if (typeof val === 'string') {
+                return undefined;
+            }
             return val.toFixed ? Number(val.toFixed(4)) : val;
         });
         });

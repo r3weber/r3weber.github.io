@@ -105,10 +105,9 @@
     //     });
     map.on('move', () => {
         const { lng, lat } = map.getCenter();
-        lng.toFixed(2);
-        lat.toFixed(2);
+       
         var zoom = map.getZoom().toFixed(2);
-        document.getElementById('info').innerHTML = `Longitude: ${lng} Latitude: ${lat} Zoom: ${zoom}`
+        document.getElementById('info').innerHTML = `Longitude: ${lng.toFixed(4)} Latitude: ${lat.toFixed(4)} Zoom: ${zoom}`
     })
    });
     

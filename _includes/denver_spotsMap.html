@@ -103,7 +103,7 @@
     //     document.getElementById('info').innerHTML =
     //         JSON.stringify(latLong, replacer);
     //     });
-    map.on('move', () => {
+    map.on('click', () => {
         const { lng, lat } = map.getCenter();
        
         var zoom = map.getZoom().toFixed(2);

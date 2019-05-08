@@ -92,13 +92,15 @@
     map.addControl(new mapboxgl.FullscreenControl());
      // Add a layer showing the places.      
      map.on('mousemove', function (e) {
-        document.getElementById('info').innerHTML =
-        JSON.stringify(e.lngLat, function(key, val){
-            if (typeof val === 'string') {
-                return undefined;
-            }
+        var latLong = JSON.stringify(e.lngLat, function(key, val){
+        
             return val.toFixed ? Number(val.toFixed(4)) : val;
-        });
+            });
+        function replacer(key, value) {
+            return value.replace(/[^\w\s]/gi, '');
+        }
+        document.getElementById('info').innerHTML =
+            JSON.stringify(latLong, replacer);
         });
      
    });

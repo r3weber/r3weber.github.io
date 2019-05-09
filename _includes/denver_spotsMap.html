@@ -103,8 +103,10 @@
     //     document.getElementById('info').innerHTML =
     //         JSON.stringify(latLong, replacer);
     //     });
-    map.on('click', () => {
-        const { lng, lat } = map.getCenter();
+    map.on('click', (e) => {
+        // const { lng, lat } = map.getCenter(e);
+        var lng = e.lngLat.lng;
+        var lat = e.lngLat.lat;
        
         var zoom = map.getZoom().toFixed(2);
         document.getElementById('info').innerHTML = `Longitude: ${lng.toFixed(4)} Latitude: ${lat.toFixed(4)} Zoom: ${zoom}`

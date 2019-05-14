@@ -7,3 +7,4 @@ layout: home
 **Get Directions to Bars and Restaraunts**
 click two different locations on the map or search
 {%include denver_spotsMap.html%}
+

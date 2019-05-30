@@ -44,10 +44,10 @@
     
     <div id='map'>
         
-       <div id='state-legend' class='legend'>
+       <!-- <div id='state-legend' class='legend'>
             <div><span style='background-color:red'></span>Homeless Camp Area</div>
             
-        </div>
+        </div> -->
     </div>
     <div id='info'></div>
     <script>
@@ -71,18 +71,18 @@
     directions.setOrigin('2193 Arapahoe St, Denver CO 80205');
     avoid_areas = 'https://r3weber.github.io/assets/geoJson/avoid_areas.geojson'
    map.on('load', function () {
-    map.addSource('avoids', {type: 'geojson', data: avoid_areas});
-    // map.getSource('runs').setData({geojson});
-    map.addLayer({
-            "id": "avoids",
-            "type": "fill",
-            "source": "avoids",
-            paint: {
-                'fill-color': 'red',
-                'fill-opacity': 0.5,
-                'fill-outline-color': 'black'
-                },            
-        });
+    // map.addSource('avoids', {type: 'geojson', data: avoid_areas});
+    // // map.getSource('runs').setData({geojson});
+    // map.addLayer({
+    //         "id": "avoids",
+    //         "type": "fill",
+    //         "source": "avoids",
+    //         paint: {
+    //             'fill-color': 'red',
+    //             'fill-opacity': 0.5,
+    //             'fill-outline-color': 'black'
+    //             },            
+    //     });
 
  
     map.addControl(new mapboxgl.AttributionControl({

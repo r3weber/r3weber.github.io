@@ -5,4 +5,4 @@ author: Rob
 thumbnail:   
 permalink: /arrowgold/
 ---
-{$ include arrowgold.html $}
+{% include arrowgold.html %}

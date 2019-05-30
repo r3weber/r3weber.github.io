@@ -1,0 +1,51 @@
+<html>
+ <head>
+ <script type='text/javascript'>
+ function receivedNewEOSPosition(lat, lon, elv, numSatsUsed, pdop, hdop, vdop, diffAge, diffType, diffStn,
+xyzAccuracy, zAccuracy, xyAccuracy, geoidSep)
+ {
+ document.getElementById('latElement').innerHTML = lat;
+ document.getElementById('lonElement').innerHTML = lon;
+ document.getElementById('elvElement').innerHTML = elv;
+document.getElementById('numSatsUsedElement').innerHTML = numSatsUsed;
+document.getElementById('pdopElement').innerHTML = pdop;
+document.getElementById('hdopElement').innerHTML = hdop;
+document.getElementById('vdopElement').innerHTML = vdop;
+document.getElementById('diffAgeElement').innerHTML = diffAge;
+document.getElementById('diffTypeElement').innerHTML = diffType;
+document.getElementById('diffStnElement').innerHTML = diffStn;
+document.getElementById('xyzAccuracyElement').innerHTML = xyzAccuracy;
+document.getElementById('zAccuracyElement').innerHTML = zAccuracy;
+document.getElementById('xyAccuracyElement').innerHTML = xyAccuracy;
+document.getElementById('geoidSepElement').innerHTML = geoidSep;
+ }
+ </script>
+ </head>
+ <body style='overflow-x: hidden; overflow-y: hidden; color: #2E2E2E; font-family: 'Lucida Grande', 'Lucida
+Sans Unicode', 'Lucida Sans', 'DejaVu Sans', Verdana, sans-serif;'>
+ <h2 style = "font-size: 20px; color: #2E2E2E; font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida
+Sans', 'DejaVu Sans', Verdana, sans-serif;" align='center' >Eos Tools Pro Test Page</h2>
+ <br/>
+ <center>
+ <table width="200" border="0">
+ <tbody>
+ <tr>
+ <td style="text-align: right"><strong style="color: #11358A">Latitude: </strong></td>
+ <td><p id="latElement">Lat</p></td>
+ </tr>
+ <tr>
+ <td style="text-align: right"><strong style="color: #11358A">Longitude: </strong></td>
+ <td><p id="lonElement">Lon</p></td>
+ </tr>
+ <tr>
+ <td style="text-align: right"><strong style="color: #11358A">MSL: </strong></td>
+ <td><p id="elvElement">elv</p></td>
+ </tr>
+*
+* (etc)
+*
+ </tbody>
+</table>
+</center>
+</body>
+</html>

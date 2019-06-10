@@ -42,17 +42,21 @@ document.getElementById('geoidSepElement').innerHTML = geoidSep;
   
       <div class="form-elements">
         <fieldset class="pure-group">
-          <label for="latElement">Lat: </label>
+          <label for="latElement">Lat </label>
           <input id="latElement" name="lat" />
         </fieldset>
   
         <fieldset class="pure-group">
-          <label for="lonElement">Lon: </label>
+          <label for="lonElement">Lon </label>
           <input id="lonElement" name="lon" />
         </fieldset>
 
         <fieldset class="pure-group">
-          <label for="elvElement">Elev MSL: </label>
+          <label for="elvElement">Elev (GNSS coarse MSL Height; if accurate MSL height is required, Ellipsoidal must be computed first
+            with the formula: Ellipsoidal = MSL (elv) + Undulation (geoidSep) and then a local geoid grid can be
+            applied to the Ellipsoidal with MSL/Orthometric = Ellipsoidal – Undulation. Note that undulation
+            value can either be positive or negative)
+             </label>
           <input id="elvElement" name="elv"/>
         </fieldset>
 
@@ -72,47 +76,43 @@ document.getElementById('geoidSepElement').innerHTML = geoidSep;
         </fieldset>
 
         <fieldset class="pure-group">
-          <label for="vdopElement">VDop</label>
+          <label for="vdopElement">VDop (Vertical Dilution of Precision)
+          </label>
           <input id="vdopElement" name="vdop" />
         </fieldset>
 
         <fieldset class="pure-group">
-          <label for="diffAgeElement">Diff Age</label>
+          <label for="diffAgeElement">Diff Age (Age of differential correction)</label>
           <input id="diffAgeElement" name="diffAge" />
         </fieldset>
 
         <fieldset class="pure-group">
-          <label for="diffTypeElement">Diff Type</label>
+          <label for="diffTypeElement">Diff Type (Position/fix type: 0=No solution, 1=GPS, 2=DGPS, 4=RTK Fixed, 5=Float)</label>
           <input id="diffTypeElement" name="diffType" />
         </fieldset>
 
         <fieldset class="pure-group">
-          <label for="diffStnElement">Diff Stn</label>
+          <label for="diffStnElement">Diff Stn (Differential Station ID)</label>
           <input id="diffStnElement" name="diffStn" />
         </fieldset>
 
         <fieldset class="pure-group">
-          <label for="xyzAccuracyElement">Diff Stn</label>
+          <label for="xyzAccuracyElement">XYZ Accuracy</label>
           <input id="xyzAccuracyElement" name="xyzAccuracy" />
         </fieldset>
 
         <fieldset class="pure-group">
-          <label for="zAccuracyElement">Diff Stn</label>
+          <label for="zAccuracyElement">Z Accuracy</label>
           <input id="zAccuracyElement" name="zAccuracy" />
         </fieldset>
 
         <fieldset class="pure-group">
-          <label for="xyAccuracyElement">Diff Stn</label>
+          <label for="xyAccuracyElement">XY Accuracy</label>
           <input id="xyAccuracyElement" name="xyAccuracy" />
         </fieldset>
 
         <fieldset class="pure-group">
-          <label for="zAccuracyElement">Diff Stn</label>
-          <input id="zAccuracyElement" name="zAccuracy" />
-        </fieldset>
-
-        <fieldset class="pure-group">
-          <label for="geoidSepElement">Diff Stn</label>
+          <label for="geoidSepElement">Geoid Sep (Geoidal separation (undulation). See “elv” above)</label>
           <input id="geoidSepElement" name="geoidSep" />
         </fieldset>
         

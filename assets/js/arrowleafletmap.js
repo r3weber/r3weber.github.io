@@ -11,7 +11,7 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
 
 
 
-L.marker([51.5, -0.09]).addTo(map)
+L.marker([51.5, -0.09]).addTo(mymap)
     .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
     .openPopup();
 var geojsonFeature = {
@@ -26,6 +26,7 @@ var geojsonFeature = {
         "coordinates": [lon, lat, elv]
     }
 };
+L.geoJSON(geojsonFeature).addTo(mymap);
 function receivedNewEOSPosition(lat, lon, elv, numSatsUsed, pdop, hdop, vdop, diffAge, diffType, diffStn,
 xyzAccuracy, zAccuracy, xyAccuracy, geoidSep)
 

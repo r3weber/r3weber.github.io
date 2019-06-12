@@ -27,17 +27,17 @@ L.marker([51.5, -0.09]).addTo(map)
 function receivedNewEOSPosition(lat, lon, elv, numSatsUsed, pdop, hdop, vdop, diffAge, diffType, diffStn,
 xyzAccuracy, zAccuracy, xyAccuracy, geoidSep)
 
-var geojsonFeature = {
-    "type": "Feature",
-    "properties": {
-        "name": "Coors Field",
-        "amenity": "Baseball Stadium",
-        "numSatsUsed": numSatsUsed
-    },
-    "geometry": {
-        "type": "Point",
-        "coordinates": [lon, lat, elv]
-    }
-};
+// var geojsonFeature = {
+//     "type": "Feature",
+//     "properties": {
+//         "name": "Coors Field",
+//         "amenity": "Baseball Stadium",
+//         "numSatsUsed": numSatsUsed
+//     },
+//     "geometry": {
+//         "type": "Point",
+//         "coordinates": [lon, lat, elv]
+//     }
+// };
 </script>
 </body>

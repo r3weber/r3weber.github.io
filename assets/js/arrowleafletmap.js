@@ -11,9 +11,9 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
 
 
 
-L.marker([51.5, -0.09]).addTo(mymap)
-    .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
-    .openPopup();
+// L.marker([51.5, -0.09]).addTo(mymap)
+//     .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
+//     .openPopup();
 
 function receivedNewEOSPosition(lat, lon, elv, numSatsUsed, pdop, hdop, vdop, diffAge, diffType, diffStn,
 xyzAccuracy, zAccuracy, xyAccuracy, geoidSep){
@@ -31,6 +31,8 @@ xyzAccuracy, zAccuracy, xyAccuracy, geoidSep){
 };
 L.geoJSON(geojsonFeature).addTo(mymap);
 L.marker([lat, long]).addTo(mymap)
+    .bindPopup(`Lat: ${lat}<br>Long:${lon}`)
+    .openPopup();
 mymap.setView([lat, lon], 10)  
 }
 

@@ -31,7 +31,7 @@ xyzAccuracy, zAccuracy, xyAccuracy, geoidSep){
 };
 L.geoJSON(geojsonFeature).addTo(mymap);
 L.marker([lat, long]).addTo(mymap)
-    .bindPopup(`<h2>Lat: ${lat}</h2><br><h2>Long:${lon}</h2>`)
+    .bindPopup(`<h2>Lat: ${lat}</h2>\n<h2>Long:${lon}</h2>`)
     .openPopup();
 mymap.setView([lat, lon], 10)  
 }

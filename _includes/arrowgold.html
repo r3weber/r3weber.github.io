@@ -1,6 +1,23 @@
 
- 
- <script type='text/javascript'>
+<body>
+    <h2 class="content-head is-center">Submit GNSS Metadata</h2>
+    <aside>
+         <p>
+            Data should be auto populated from Arrow Gold reciever
+         </p>
+     </aside>
+  
+  <!-- START HERE -->
+     <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css">
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+     <!-- Style The Contact Form How Ever You Prefer -->
+     <!-- <link rel="stylesheet" href="style.css"> -->
+  
+    <form class="gform pure-form pure-form-stacked" method="POST" 
+    action="https://script.google.com/macros/s/AKfycbyV3CZYKbJvqZZxeUdyrntzYJcVW0q_QqRg7EVNKw/exec">
+      <!-- change the form action to your script url -->
+      <!-- <a data-toggle="collapse" href="#form-elements">GNSS Metadata Fields</a> --> 
+<script type='text/javascript'>
 
  function receivedNewEOSPosition(lat, lon, elv, numSatsUsed, pdop, hdop, vdop, diffAge, diffType, diffStn,
 xyzAccuracy, zAccuracy, xyAccuracy, geoidSep)
@@ -21,26 +38,6 @@ document.getElementById('xyAccuracyElement').innerHTML = xyAccuracy;
 document.getElementById('geoidSepElement').innerHTML = geoidSep;
  }
  </script>
-
-
-<body>
-    <h2 class="content-head is-center">Submit GNSS Metadata</h2>
-    <aside>
-         <p>
-            Data should be auto populated from Arrow Gold reciever
-         </p>
-     </aside>
-  
-  <!-- START HERE -->
-     <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css">
-     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-     <!-- Style The Contact Form How Ever You Prefer -->
-     <!-- <link rel="stylesheet" href="style.css"> -->
-  
-    <form class="gform pure-form pure-form-stacked" method="POST" 
-    action="https://script.google.com/macros/s/AKfycbyV3CZYKbJvqZZxeUdyrntzYJcVW0q_QqRg7EVNKw/exec">
-      <!-- change the form action to your script url -->
-      <!-- <a data-toggle="collapse" href="#form-elements">GNSS Metadata Fields</a> -->
       <div id='form-elements' class="form-elements">
         <fieldset class="pure-group">
           <label for="latElement">Lat </label>

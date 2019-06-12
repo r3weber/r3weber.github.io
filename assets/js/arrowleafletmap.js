@@ -1,4 +1,4 @@
-var mymap = L.map('mapid').setView([51.505, -0.09], 13);
+var mymap = L.map('mapid').setView([39.7392, -104.9847], 13);
 
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
     maxZoom: 18,
@@ -26,10 +26,11 @@ xyzAccuracy, zAccuracy, xyAccuracy, geoidSep){
     },
     "geometry": {
         "type": "Point",
-        "coordinates": [lon, lat, elv]
+        "coordinates": [lat, lon, elv]
     }
 };
-L.geoJSON(geojsonFeature).addTo(mymap); 
-mymap.setView([lon, lat], 10)  
+L.geoJSON(geojsonFeature).addTo(mymap);
+L.marker([lat, long]).addTo(mymap)
+mymap.setView([lat, lon], 10)  
 }
 

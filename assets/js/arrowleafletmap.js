@@ -14,10 +14,6 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
 L.marker([51.5, -0.09]).addTo(map)
     .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
     .openPopup();
-
-function receivedNewEOSPosition(lat, lon, elv, numSatsUsed, pdop, hdop, vdop, diffAge, diffType, diffStn,
-xyzAccuracy, zAccuracy, xyAccuracy, geoidSep)
-
 var geojsonFeature = {
     "type": "Feature",
     "properties": {
@@ -30,3 +26,6 @@ var geojsonFeature = {
         "coordinates": [lon, lat, elv]
     }
 };
+function receivedNewEOSPosition(lat, lon, elv, numSatsUsed, pdop, hdop, vdop, diffAge, diffType, diffStn,
+xyzAccuracy, zAccuracy, xyAccuracy, geoidSep)
+

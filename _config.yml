@@ -24,7 +24,7 @@ background-image: url(/assets/images/IMG_3878.jpg)
 github_username:  r3weber
 # Disqus Comments
 disqus:
-  shortname: r3weber-1
+  shortname: 
 # Build settings
 markdown: kramdown
 theme: minima

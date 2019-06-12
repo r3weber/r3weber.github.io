@@ -6,4 +6,4 @@ thumbnail:
 permalink: /arrowgold/
 ---
 {% include arrowgoldmap.html %}
-{% include arrowgold.html %}
+

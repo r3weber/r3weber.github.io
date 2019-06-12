@@ -1,5 +1,4 @@
-var mymap = L.map('mapid');
-    // .setView([39.7392, -104.9847], 13);
+var mymap = L.map('mapid').setView([39.7392, -104.9847], 13);
 
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
     maxZoom: 18,
@@ -32,7 +31,7 @@ xyzAccuracy, zAccuracy, xyAccuracy, geoidSep){
 };
 L.geoJSON(geojsonFeature).addTo(mymap);
 L.marker([lat, long]).addTo(mymap)
-    .bindPopup(`Lat: ${lat}<br>Long:${lon}`)
+    .bindPopup(`<h2>Lat: ${lat}</h2><br><h2>Long:${lon}</h2>`)
     .openPopup();
 mymap.setView([lat, lon], 10)  
 }

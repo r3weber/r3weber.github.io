@@ -24,30 +24,30 @@ xyzAccuracy, zAccuracy, xyAccuracy, geoidSep)
  {
 
  document.getElementById('latElement').value = lat;
- document.getElementById('lonElement').innerHTML = lon;
- document.getElementById('elvElement').innerHTML = elv;
-document.getElementById('numSatsUsedElement').innerHTML = numSatsUsed;
-document.getElementById('pdopElement').innerHTML = pdop;
-document.getElementById('hdopElement').innerHTML = hdop;
-document.getElementById('vdopElement').innerHTML = vdop;
-document.getElementById('diffAgeElement').innerHTML = diffAge;
-document.getElementById('diffTypeElement').innerHTML = diffType;
-document.getElementById('diffStnElement').innerHTML = diffStn;
-document.getElementById('xyzAccuracyElement').innerHTML = xyzAccuracy;
-document.getElementById('zAccuracyElement').innerHTML = zAccuracy;
-document.getElementById('xyAccuracyElement').innerHTML = xyAccuracy;
-document.getElementById('geoidSepElement').innerHTML = geoidSep;
+ document.getElementById('lonElement').value = lon;
+ document.getElementById('elvElement').value = elv;
+document.getElementById('numSatsUsedElement').value = numSatsUsed;
+document.getElementById('pdopElement').value = pdop;
+document.getElementById('hdopElement').value = hdop;
+document.getElementById('vdopElement').value = vdop;
+document.getElementById('diffAgeElement').value = diffAge;
+document.getElementById('diffTypeElement').value = diffType;
+document.getElementById('diffStnElement').value = diffStn;
+document.getElementById('xyzAccuracyElement').value = xyzAccuracy;
+document.getElementById('zAccuracyElement').value = zAccuracy;
+document.getElementById('xyAccuracyElement').value = xyAccuracy;
+document.getElementById('geoidSepElement').value = geoidSep;
  }
  </script>
       <div id='form-elements' class="form-elements">
         <fieldset class="pure-group">
           <label for="latElement">Lat </label>
-          <input id="latElement" name="lat" value=""/>
+          <input id="latElement" name="lat" />
         </fieldset>
   
         <fieldset class="pure-group">
           <label for="lonElement">Lon </label>
-          <p type='hidden' id="lonElement" name="lon"></p>
+          <input id="lonElement" name="lon"/>
         </fieldset>
 
         <fieldset class="pure-group">
@@ -56,17 +56,17 @@ document.getElementById('geoidSepElement').innerHTML = geoidSep;
             applied to the Ellipsoidal with MSL/Orthometric = Ellipsoidal – Undulation. Note that undulation
             value can either be positive or negative)
              </label>
-          <p id="elvElement" name="elv"></p>
+          <input id="elvElement" name="elv"/>
         </fieldset>
 
         <fieldset class="pure-group">
           <label for="numSatsUsedElement">NumSatsUsed</label>
-          <p id="numSatsUsedElement" name="numSatsUsed"></p>
+          <input id="numSatsUsedElement" name="numSatsUsed"/>
         </fieldset>
 
         <fieldset class="pure-group">
           <label for="pdopElement">PDop</label>
-          <p id="pdopElement" name="pdop"></p>
+          <input id="pdopElement" name="pdop"/>
         </fieldset>
 
         <fieldset class="pure-group">

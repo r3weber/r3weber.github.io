@@ -17,22 +17,22 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
 
 function receivedNewEOSPosition(lat, lon, elv, numSatsUsed, pdop, hdop, vdop, diffAge, diffType, diffStn,
 xyzAccuracy, zAccuracy, xyAccuracy, geoidSep){
- var geojsonFeature = {
-    "type": "Feature",
-    "properties": {
-        "name": "Coors Field",
-        "amenity": "Baseball Stadium",
-        "numSatsUsed": numSatsUsed
-    },
-    "geometry": {
-        "type": "Point",
-        "coordinates": [lat, lon, elv]
-    }
-};
-L.geoJSON(geojsonFeature).addTo(mymap);
-L.marker([lat, long]).addTo(mymap)
-    .bindPopup(`<h2>Lat: ${lat}</h2>\n<h2>Long:${lon}</h2>`)
-    .openPopup();
-mymap.setView([lat, lon], 10)  
+//  var geojsonFeature = {
+//     "type": "Feature",
+//     "properties": {
+//         "name": "Coors Field",
+//         "amenity": "Baseball Stadium",
+//         "numSatsUsed": numSatsUsed
+//     },
+//     "geometry": {
+//         "type": "Point",
+//         "coordinates": [lat, lon, elv]
+//     }
+// };
+// L.geoJSON(geojsonFeature).addTo(mymap);
+L.marker([lat, long]).addTo(mymap);
+    // .bindPopup(`<h2>Lat: ${lat}</h2>\n<h2>Long:${lon}</h2>`)
+    // .openPopup();
+L.map('mapid').setView([lat, lon], 10);  
 }
 

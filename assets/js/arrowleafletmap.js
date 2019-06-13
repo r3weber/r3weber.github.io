@@ -19,10 +19,10 @@ mymap.on('load', function() {
 
 // var latlng = L.latlon(lat, lon);
 console.log(position);
-L.marker(position).addTo(mymap);
+L.marker([position]).addTo(mymap);
     // .bindPopup(`<h2>Lat: ${lat}</h2>\n<h2>Long:${lon}</h2>`)
     // .openPopup();
-L.map('mapid').setView(position, 10);  
+L.map('mapid').setView([position], 10);  
 
 
 

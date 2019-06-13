@@ -57,7 +57,7 @@
       // formData.formGoogleSend
       //   = form.dataset.email || "rweber@osmre.gov"; // no email by default
   
-      console.log(formData);
+      console.log(formData.lat);
       
       return {data: formData, honeypot};
     }

@@ -26,8 +26,9 @@
 xyzAccuracy, zAccuracy, xyAccuracy, geoidSep)
  {
   var marker = L.marker([lat, lon]).addto(mymap);
-  marker.addto(mymap); 
-  marker.setLatLng([lat, lon]);
+  marker.addto(mymap);
+  
+  // marker.setLatLng([lat, lon]);
   
  document.getElementById('latElement').value = lat;
  document.getElementById('lonElement').value = lon;

@@ -2,7 +2,7 @@ var position = []
 
 function receivedNewEOSPosition(lat, lon, elv, numSatsUsed, pdop, hdop, vdop, diffAge, diffType, diffStn,
 xyzAccuracy, zAccuracy, xyAccuracy, geoidSep){
-position.push(lat.toFixed(2), lon.toFixed(2))
+position.push(lat, lon)
 
 }
 var mymap = L.map('mapid').setView([39.97668989, -105.26395322], 13);

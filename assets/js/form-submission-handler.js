@@ -59,6 +59,7 @@
   
       console.log(formData.lat);
       L.marker([formData.lat, formData.lon]).addTo(mymap);
+      mymap.setView([formData.lat, formData.lon], 13);
       return {data: formData, honeypot};
       
     }

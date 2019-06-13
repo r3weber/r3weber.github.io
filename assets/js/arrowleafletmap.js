@@ -11,8 +11,8 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
 mymap.on('load', function receivedNewEOSPosition(lat, lon, elv, numSatsUsed, pdop, hdop, vdop, diffAge, diffType, diffStn,
 xyzAccuracy, zAccuracy, xyAccuracy, geoidSep) {
 
-
+L.marker([39.97668989, -105.26395322]).addTo(mymap);
 var latlng = L.latlon([lat, lon]);
-var marker = L.marker([latlng]).addTo(mymap)
+var marker = L.marker([latlng]).addTo(mymap);
 marker.setLatLng([latlng]);
 });

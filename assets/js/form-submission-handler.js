@@ -58,7 +58,7 @@
       //   = form.dataset.email || "rweber@osmre.gov"; // no email by default
   
       console.log(formData.lat);
-      L.marker([formdata.lat, formdata.lon]).addTo(mymap);
+      
       return {data: formData, honeypot};
       
     }
@@ -68,7 +68,7 @@
       var form = event.target;
       var formData = getFormData(form);
       var data = formData.data;
-  
+      L.marker([formdata.lat, formdata.lon]).addTo(mymap);
       // If a honeypot field is filled, assume it was done so by a spam bot.
       if (formData.honeypot) {
         return false;

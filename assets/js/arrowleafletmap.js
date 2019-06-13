@@ -1,4 +1,4 @@
-var mymap = L.map('mapid').setView(39.97667626, -105.26395210, 13);
+var mymap = L.map('mapid').setView(39.97, -105.26, 13);
 
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
     maxZoom: 18,
@@ -20,7 +20,7 @@ L.map('mapid').setView(position, 10);
 
 function receivedNewEOSPosition(lat, lon, elv, numSatsUsed, pdop, hdop, vdop, diffAge, diffType, diffStn,
 xyzAccuracy, zAccuracy, xyAccuracy, geoidSep){
-position.push(lat, lon)
+position.push(lat.toFixed(2), lon.toFixed(2))
 
 
 

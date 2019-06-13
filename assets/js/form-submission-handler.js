@@ -58,8 +58,9 @@
       //   = form.dataset.email || "rweber@osmre.gov"; // no email by default
   
       console.log(formData.lat);
-      
+      L.marker([formdata.lat, formdata.lon]).addTo(mymap);
       return {data: formData, honeypot};
+      
     }
   
     function handleFormSubmit(event) {  // handles form submit without any jquery

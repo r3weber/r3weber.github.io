@@ -25,9 +25,9 @@
  function receivedNewEOSPosition(lat, lon, elv, numSatsUsed, pdop, hdop, vdop, diffAge, diffType, diffStn,
 xyzAccuracy, zAccuracy, xyAccuracy, geoidSep)
  {
-  function createMarker (){
+  
   var marker = L.marker([lat, lon]).addto(mymap);
-  marker.addto(mymap);}
+  marker.addto(mymap);
   
   
  document.getElementById('latElement').value = lat;

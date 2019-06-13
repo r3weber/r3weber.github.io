@@ -5,7 +5,7 @@ xyzAccuracy, zAccuracy, xyAccuracy, geoidSep){
 position.push(lat.toFixed(2), lon.toFixed(2))
 
 }
-var mymap = L.map('mapid').setView([39.97, -105.26], 13);
+var mymap = L.map('mapid').setView([39.97668989, -105.26395322], 13);
 
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
     maxZoom: 18,

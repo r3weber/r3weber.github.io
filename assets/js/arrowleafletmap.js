@@ -12,7 +12,7 @@ mymap.on('load', function receivedNewEOSPosition(lat, lon, elv, numSatsUsed, pdo
 xyzAccuracy, zAccuracy, xyAccuracy, geoidSep) {
 
 
-var latlng = L.latlon(lat, lon);
-var marker = L.marker(latlng).addTo(mymap)
-marker.setLatLng(latlng);
+var latlng = L.latlon([lat, lon]);
+var marker = L.marker([latlng]).addTo(mymap)
+marker.setLatLng([latlng]);
 });

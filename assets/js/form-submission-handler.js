@@ -58,10 +58,7 @@
       //   = form.dataset.email || "rweber@osmre.gov"; // no email by default
   
       console.log(formData);
-      var lat = document.getElementById('latElement').value;
-      var lon = document.getElementById('lonElement').value;
       
-      L.marker([lat, lon]).addTo(L.map('mapid'));
       return {data: formData, honeypot};
     }
   

@@ -94,7 +94,9 @@
       // $.getJSON("https://r3weber.github.io/assets/geoJson/arrowgoldmetadata.geojson", function(data) {
       //   var myLayer = L.geoJson(data);
       L.realtime({ 
-          url: "https://r3weber.github.io/assets/geoJson/arrowgoldmetadata.geojson"
+          url: "https://r3weber.github.io/assets/geoJson/arrowgoldmetadata.geojson",
+          crossOrigin: true,
+        type: 'json'
       }, {
         updateFeature(gjsonFeature, myLayer)
       }).addTo(mymap);

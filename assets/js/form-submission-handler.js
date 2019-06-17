@@ -58,7 +58,9 @@
       //   = form.dataset.email || "rweber@osmre.gov"; // no email by default
   
       console.log(formData.lat);
-      L.marker([formData.lat, formData.lon]).addTo(mymap);
+      var marker = L.marker([formData.lat, formData.lon]).addTo(mymap);
+      var geojsonfeature = marker.toGeoJSON(15)
+      arrowgeojson.addData(geojsonfeature);
       mymap.setView([formData.lat, formData.lon], 5);
       return {data: formData, honeypot};
       

@@ -91,15 +91,17 @@
            "coordinates": [ formData.lon, formData.lat ] 
           } 
         };
-        var fs = require("fs");
-        fs.writeFile("./test.geojson", JSON.stringify(gjsonFeature, null, 3), (err) => {
-          if (err) {
-            console.error(err);
-            return;
-          };
-          console.log('file is created')
-        });
-    //   $.getJSON("https://r3weber.github.io/assets/geoJson/arrowgoldmetadata.geojson", function(data) {
+        // $.getJSON("https://r3weber.github.io/assets/geoJson/arrowgoldmetadata.geojson", function(data) {
+        //   fs.readFile(data, )
+        // var fs = require("fs");
+        // fs.writeFile("./test.geojson", JSON.stringify(gjsonFeature, null, 3), (err) => {
+        //   if (err) {
+        //     console.error(err);
+        //     return;
+        //   };
+        //   console.log('file is created')
+        // });
+      
     //     var myLayer = L.geoJson(data);
     //   L.realtime({ 
     //       url: "https://r3weber.github.io/assets/geoJson/arrowgoldmetadata.geojson",
@@ -108,8 +110,8 @@
     //   }).addTo(mymap);
     // });
       
-      // var marker = L.marker([formData.lat, formData.lon]);
-      // marker.addTo(mymap);
+      var marker = L.marker([formData.lat, formData.lon]);
+      marker.addTo(mymap);
       mymap.setView([formData.lat, formData.lon], 10);
       return {data: formData, honeypot};
       

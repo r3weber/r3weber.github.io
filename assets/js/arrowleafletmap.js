@@ -10,13 +10,8 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
     id: 'mapbox.streets',
     accessToken: 'pk.eyJ1IjoicjN3ZWJlcjEiLCJhIjoiY2lyM3lhc3FnMDFrZ2Zwbm04cncwa2JkMiJ9.AeYZqyDiobmuxAVfIKE8gA'
 }).addTo(mymap);
-var arrowgeojson = new L.GeoJSON.AJAX('https://r3weber.github.io/assets/geoJson/arrowgoldmetadata.geojson');
-arrowgeojson.addTo(mymap);
-// function receivedNewEOSPosition(lat, lon, elv, numSatsUsed, pdop, hdop, vdop, diffAge, diffType, diffStn,
-// xyzAccuracy, zAccuracy, xyAccuracy, geoidSep) {
 
-// L.marker([39.97668989, -105.26395322]).addTo(mymap);
-// // var latlng = L.latlon([lat, lon]);
-// // var marker = L.marker([latlng]).addTo(mymap);
-// // marker.setLatLng([latlng]);
-// }
+var arrowgeojson = $.getJSON("https://r3weber.github.io/assets/geoJson/arrowgoldmetadata.geojson", function(data) {
+    L.geoJson(data)
+});
+arrowgeojson.addTo(mymap);

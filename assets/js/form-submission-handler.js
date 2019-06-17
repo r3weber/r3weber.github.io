@@ -58,10 +58,17 @@
       //   = form.dataset.email || "rweber@osmre.gov"; // no email by default
   
       console.log(formData.lat);
-      var marker = L.marker([formData.lat, formData.lon]).addTo(mymap);
-      var geojsonfeature = marker.toGeoJSON(15)
-      arrowgeojson.addData(geojsonfeature);
-      mymap.setView([formData.lat, formData.lon], 5);
+      // var marker = 
+      // var geojsonfeature = marker.toGeoJSON(15)
+      // arrowgeojson.addData(geojsonfeature);
+      
+      $.getJSON("https://r3weber.github.io/assets/geoJson/arrowgoldmetadata.geojson", function(data) {
+        var arrowgeojson = L.geoJson(data);
+        arrowgeojson.addTo(mymap);
+        var marker = L.marker([formData.lat, formData.lon]);
+        arrowgeojson.addData(marker.toGeoJSON(15));
+      });
+      mymap.setView([formData.lat, formData.lon], 10);
       return {data: formData, honeypot};
       
     }

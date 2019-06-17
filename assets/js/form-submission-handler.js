@@ -91,13 +91,14 @@
            "coordinates": [ formData.lon, formData.lat ] 
           } 
         };
-      $.getJSON("https://r3weber.github.io/assets/geoJson/arrowgoldmetadata.geojson", function(data) {
-        var myLayer = L.geoJson(data);
-        L.realtime({ myLayer
+      // $.getJSON("https://r3weber.github.io/assets/geoJson/arrowgoldmetadata.geojson", function(data) {
+      //   var myLayer = L.geoJson(data);
+      L.realtime({ 
+          url: "https://r3weber.github.io/assets/geoJson/arrowgoldmetadata.geojson"
       }, {
         updateFeature(gjsonFeature, myLayer)
       }).addTo(mymap);
-      });
+      
       // var marker = L.marker([formData.lat, formData.lon]);
       // marker.addTo(mymap);
       mymap.setView([formData.lat, formData.lon], 10);

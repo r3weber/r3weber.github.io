@@ -25,7 +25,7 @@
  function receivedNewEOSPosition(lat, lon, elv, numSatsUsed, pdop, hdop, vdop, diffAge, diffType, diffStn,
 xyzAccuracy, zAccuracy, xyAccuracy, geoidSep)
  {
-  
+  mymap.setView([lat, lon]);
  document.getElementById('latElement').value = lat;
  document.getElementById('lonElement').value = lon;
  document.getElementById('elvElement').value = elv;

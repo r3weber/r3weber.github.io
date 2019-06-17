@@ -92,7 +92,8 @@
           } 
         };
       $.getJSON("https://r3weber.github.io/assets/geoJson/arrowgoldmetadata.geojson", function(data) {
-        L.geoJson(data).addData(gjsonFeature);
+        var myLayer = L.geoJson(data);
+        myLayer.addData(gjsonFeature);
       });
       var marker = L.marker([formData.lat, formData.lon]);
       marker.addTo(mymap);

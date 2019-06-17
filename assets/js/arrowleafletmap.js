@@ -10,7 +10,8 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
     id: 'mapbox.streets',
     accessToken: 'pk.eyJ1IjoicjN3ZWJlcjEiLCJhIjoiY2lyM3lhc3FnMDFrZ2Zwbm04cncwa2JkMiJ9.AeYZqyDiobmuxAVfIKE8gA'
 }).addTo(mymap);
-var arrowgeojson = L.geoJSON('https://r3weber.github.io/assets/geoJson/arrowgoldmetadata.geojson').addTo(mymap);
+var arrowgeojson = L.geoJSON.AJAX('https://r3weber.github.io/assets/geoJson/arrowgoldmetadata.geojson');
+arrowgeojson.addTo(mymap);
 // function receivedNewEOSPosition(lat, lon, elv, numSatsUsed, pdop, hdop, vdop, diffAge, diffType, diffStn,
 // xyzAccuracy, zAccuracy, xyAccuracy, geoidSep) {
 

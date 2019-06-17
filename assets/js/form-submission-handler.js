@@ -93,10 +93,13 @@
         };
       $.getJSON("https://r3weber.github.io/assets/geoJson/arrowgoldmetadata.geojson", function(data) {
         var myLayer = L.geoJson(data);
-        myLayer.addData(gjsonFeature);
+        L.realtime({ myLayer
+      }, {
+        updateFeature(gjsonFeature, myLayer)
+      }).addTo(mymap);
       });
-      var marker = L.marker([formData.lat, formData.lon]);
-      marker.addTo(mymap);
+      // var marker = L.marker([formData.lat, formData.lon]);
+      // marker.addTo(mymap);
       mymap.setView([formData.lat, formData.lon], 10);
       return {data: formData, honeypot};
       

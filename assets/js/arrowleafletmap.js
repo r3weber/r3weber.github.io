@@ -12,6 +12,6 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
 }).addTo(mymap);
 
 var arrowgeojson = $.getJSON("https://r3weber.github.io/assets/geoJson/arrowgoldmetadata.geojson", function(data) {
-    L.geoJson(data)
+    L.geoJson(data).addTo(mymap);
 });
-arrowgeojson.addTo(mymap);
+

@@ -61,14 +61,41 @@
       // var marker = 
       // var geojsonfeature = marker.toGeoJSON(15)
       // arrowgeojson.addData(geojsonfeature);
-      
+      var dateObj = new Date();
+      var month = dateObj.getUTCMonth() + 1; //months from 1-12
+      var day = dateObj.getUTCDate();
+      var year = dateObj.getUTCFullYear();
+
+      var newdate = year + "/" + month + "/" + day;
+      var gjsonFeature = { 
+        "type": "Feature", 
+        "properties": {
+          "Timestamp": newdate, 
+          "lat": formData.lat, 
+          "lon": formData.lon, 
+          "elv": formData.elv, 
+          "numSatsUsed": formData.numSatsUsed, 
+          "pdop": formData.pdop, 
+          "hdop": formData.hdop, 
+          "vdop": formData.vdop, 
+          "diffAge": formData.diffAge, 
+          "diffType": formData.diffType, 
+          "diffStn": formData.diffStn, 
+          "xyzAccuracy": formData.xyzAccuracy, 
+          "zAccuracy": formData.zAccuracy, 
+          "xyAccuracy": formData.xyAccuracy, 
+          "geoidSep": formData.geoidSep
+         }, 
+         "geometry": { 
+           "type": "Point", 
+           "coordinates": [ formData.lon, formData.lat ] 
+          } 
+        };
       $.getJSON("https://r3weber.github.io/assets/geoJson/arrowgoldmetadata.geojson", function(data) {
-        var arrowgeojson = L.geoJson(data);
-        var marker = L.marker([formData.lat, formData.lon]);
-        marker.addTo(mymap);
-        var gjsonmarker = marker.toGeoJSON(15);
-        arrowgeojson.addData(gjsonmarker);
+        L.geoJson(data).addData(gjsonFeature);
       });
+      var marker = L.marker([formData.lat, formData.lon]);
+      marker.addTo(mymap);
       mymap.setView([formData.lat, formData.lon], 10);
       return {data: formData, honeypot};
       

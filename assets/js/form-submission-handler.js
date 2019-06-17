@@ -93,14 +93,14 @@
         };
         // $.getJSON("https://r3weber.github.io/assets/geoJson/arrowgoldmetadata.geojson", function(data) {
         //   fs.readFile(data, )
-        // var fs = require("fs");
-        // fs.writeFile("./test.geojson", JSON.stringify(gjsonFeature, null, 3), (err) => {
-        //   if (err) {
-        //     console.error(err);
-        //     return;
-        //   };
-        //   console.log('file is created')
-        // });
+        var fs = require("fs");
+        fs.writeFile("./test.geojson", JSON.stringify(gjsonFeature, null, 3), (err) => {
+          if (err) {
+            console.error(err);
+            return;
+          };
+          console.log('file is created')
+        });
       
     //     var myLayer = L.geoJson(data);
     //   L.realtime({ 

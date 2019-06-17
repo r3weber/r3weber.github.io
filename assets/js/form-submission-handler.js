@@ -64,9 +64,9 @@
       
       $.getJSON("https://r3weber.github.io/assets/geoJson/arrowgoldmetadata.geojson", function(data) {
         var arrowgeojson = L.geoJson(data);
-        arrowgeojson.addTo(mymap);
         var marker = L.marker([formData.lat, formData.lon]);
-        arrowgeojson.addData(marker.toGeoJSON(15));
+        var gjsonmarker = marker.toGeoJSON(15);
+        arrowgeojson.addData(gjsonmarker);
       });
       mymap.setView([formData.lat, formData.lon], 10);
       return {data: formData, honeypot};

@@ -100,7 +100,7 @@
         a.download = 'controlPoint.json';
         a.innerHTML = 'download JSON';
         
-        var container = document.getElementById('mapid');
+        var container = document.getElementById('jsondl');
         container.appendChild(a);
       var marker = L.marker([formData.lat, formData.lon]);
       marker.addTo(mymap);

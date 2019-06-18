@@ -67,32 +67,41 @@
       // var year = dateObj.getUTCFullYear();
 
       // var newdate = year + "/" + month + "/" + day;
-      // var gjsonFeature = { 
-      //   "type": "Feature", 
-      //   "properties": {
-      //     "Timestamp": newdate, 
-      //     "lat": formData.lat, 
-      //     "lon": formData.lon, 
-      //     "elv": formData.elv, 
-      //     "numSatsUsed": formData.numSatsUsed, 
-      //     "pdop": formData.pdop, 
-      //     "hdop": formData.hdop, 
-      //     "vdop": formData.vdop, 
-      //     "diffAge": formData.diffAge, 
-      //     "diffType": formData.diffType, 
-      //     "diffStn": formData.diffStn, 
-      //     "xyzAccuracy": formData.xyzAccuracy, 
-      //     "zAccuracy": formData.zAccuracy, 
-      //     "xyAccuracy": formData.xyAccuracy, 
-      //     "geoidSep": formData.geoidSep
-      //    }, 
-      //    "geometry": { 
-      //      "type": "Point", 
-      //      "coordinates": [ formData.lon, formData.lat ] 
-      //     } 
-      //   };
+      var gjsonFeature = { 
+        "type": "Feature", 
+        "properties": {
+          "Timestamp": newdate, 
+          "lat": formData.lat, 
+          "lon": formData.lon, 
+          "elv": formData.elv, 
+          "numSatsUsed": formData.numSatsUsed, 
+          "pdop": formData.pdop, 
+          "hdop": formData.hdop, 
+          "vdop": formData.vdop, 
+          "diffAge": formData.diffAge, 
+          "diffType": formData.diffType, 
+          "diffStn": formData.diffStn, 
+          "xyzAccuracy": formData.xyzAccuracy, 
+          "zAccuracy": formData.zAccuracy, 
+          "xyAccuracy": formData.xyAccuracy, 
+          "geoidSep": formData.geoidSep
+         }, 
+         "geometry": { 
+           "type": "Point", 
+           "coordinates": [ formData.lon, formData.lat ] 
+          } 
+        };
 
-      
+    
+        var data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(gjsonFeature));
+        
+        var a = document.createElement('a');
+        a.href = 'data:' + data;
+        a.download = 'controlPoint.json';
+        a.innerHTML = 'download JSON';
+        
+        var container = document.getElementById('mapid');
+        container.appendChild(a);
       var marker = L.marker([formData.lat, formData.lon]);
       marker.addTo(mymap);
       mymap.setView([formData.lat, formData.lon], 10);

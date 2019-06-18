@@ -92,15 +92,15 @@
           } 
         };
 
-    
-        var data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(gjsonFeature));
+        document.getElementById("demo").onclick = function() {download(gjsonFeature, "controlpoint.json", "application/json")};
+        // var data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(gjsonFeature));
         
-        var a = document.createElement('a');
-        a.href = 'data:' + data;
-        a.download = 'controlPoint.json';
-        a.innerHTML = 'Download JSON';
-        var container = document.getElementById('jsondl');
-        container.appendChild(a);
+        // var a = document.createElement('a');
+        // a.href = 'data:' + data;
+        // a.download = 'controlPoint.json';
+        // a.innerHTML = 'Download JSON';
+        // var container = document.getElementById('jsondl');
+        // container.appendChild(a);
       var marker = L.marker([formData.lat, formData.lon]);
       marker.addTo(mymap);
       mymap.setView([formData.lat, formData.lon], 10);

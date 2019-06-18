@@ -61,55 +61,37 @@
       // var marker = 
       // var geojsonfeature = marker.toGeoJSON(15)
       // arrowgeojson.addData(geojsonfeature);
-      var dateObj = new Date();
-      var month = dateObj.getUTCMonth() + 1; //months from 1-12
-      var day = dateObj.getUTCDate();
-      var year = dateObj.getUTCFullYear();
+      // var dateObj = new Date();
+      // var month = dateObj.getUTCMonth() + 1; //months from 1-12
+      // var day = dateObj.getUTCDate();
+      // var year = dateObj.getUTCFullYear();
 
-      var newdate = year + "/" + month + "/" + day;
-      var gjsonFeature = { 
-        "type": "Feature", 
-        "properties": {
-          "Timestamp": newdate, 
-          "lat": formData.lat, 
-          "lon": formData.lon, 
-          "elv": formData.elv, 
-          "numSatsUsed": formData.numSatsUsed, 
-          "pdop": formData.pdop, 
-          "hdop": formData.hdop, 
-          "vdop": formData.vdop, 
-          "diffAge": formData.diffAge, 
-          "diffType": formData.diffType, 
-          "diffStn": formData.diffStn, 
-          "xyzAccuracy": formData.xyzAccuracy, 
-          "zAccuracy": formData.zAccuracy, 
-          "xyAccuracy": formData.xyAccuracy, 
-          "geoidSep": formData.geoidSep
-         }, 
-         "geometry": { 
-           "type": "Point", 
-           "coordinates": [ formData.lon, formData.lat ] 
-          } 
-        };
-        console.log(gjsonFeature);
-        // $.getJSON("https://r3weber.github.io/assets/geoJson/arrowgoldmetadata.geojson", function(data) {
-        //   fs.readFile(data, )
-        // var fs = require("fs");
-        // fs.writeFile("./test.geojson", JSON.stringify(gjsonFeature, null, 3), (err) => {
-        //   if (err) {
-        //     console.error(err);
-        //     return;
-        //   };
-        //   console.log('file is created')
-        // });
-      
-    //     var myLayer = L.geoJson(data);
-    //   L.realtime({ 
-    //       url: "https://r3weber.github.io/assets/geoJson/arrowgoldmetadata.geojson",
-    //       crossOrigin: true,
-    //     type: 'json'
-    //   }).addTo(mymap);
-    // });
+      // var newdate = year + "/" + month + "/" + day;
+      // var gjsonFeature = { 
+      //   "type": "Feature", 
+      //   "properties": {
+      //     "Timestamp": newdate, 
+      //     "lat": formData.lat, 
+      //     "lon": formData.lon, 
+      //     "elv": formData.elv, 
+      //     "numSatsUsed": formData.numSatsUsed, 
+      //     "pdop": formData.pdop, 
+      //     "hdop": formData.hdop, 
+      //     "vdop": formData.vdop, 
+      //     "diffAge": formData.diffAge, 
+      //     "diffType": formData.diffType, 
+      //     "diffStn": formData.diffStn, 
+      //     "xyzAccuracy": formData.xyzAccuracy, 
+      //     "zAccuracy": formData.zAccuracy, 
+      //     "xyAccuracy": formData.xyAccuracy, 
+      //     "geoidSep": formData.geoidSep
+      //    }, 
+      //    "geometry": { 
+      //      "type": "Point", 
+      //      "coordinates": [ formData.lon, formData.lat ] 
+      //     } 
+      //   };
+
       
       var marker = L.marker([formData.lat, formData.lon]);
       marker.addTo(mymap);

@@ -61,16 +61,16 @@
       // var marker = 
       // var geojsonfeature = marker.toGeoJSON(15)
       // arrowgeojson.addData(geojsonfeature);
-      // var dateObj = new Date();
-      // var month = dateObj.getUTCMonth() + 1; //months from 1-12
-      // var day = dateObj.getUTCDate();
-      // var year = dateObj.getUTCFullYear();
+      var dateObj = new Date();
+      var month = dateObj.getUTCMonth() + 1; //months from 1-12
+      var day = dateObj.getUTCDate();
+      var year = dateObj.getUTCFullYear();
 
-      // var newdate = year + "/" + month + "/" + day;
+      var newdate = year + "/" + month + "/" + day;
       var gjsonFeature = { 
         "type": "Feature", 
         "properties": {
-          "Timestamp": newdate, 
+          "timestamp": newdate, 
           "lat": formData.lat, 
           "lon": formData.lon, 
           "elv": formData.elv, 

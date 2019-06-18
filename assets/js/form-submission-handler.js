@@ -92,7 +92,7 @@
           } 
         };
 
-        document.getElementById("demo").onclick = function() {download(gjsonFeature, "controlpoint.json", "application/json")};
+        document.getElementById("demo").onclick = download(gjsonFeature, "controlpoint.json", "application/json");
         // var data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(gjsonFeature));
         
         // var a = document.createElement('a');
